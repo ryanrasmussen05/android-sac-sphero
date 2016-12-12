@@ -8,18 +8,20 @@ import android.widget.TextView;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
+import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.command.BackLEDOutputCommand;
 import com.orbotix.common.DiscoveryAgent;
 import com.orbotix.common.DiscoveryAgentEventListener;
 import com.orbotix.common.DiscoveryException;
+import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
-import com.orbotix.common.internal.DeviceCommand;
+import com.orbotix.common.internal.AsyncMessage;
+import com.orbotix.common.internal.DeviceResponse;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DiscoveryAgentEventListener, RobotChangedStateListener{
+public class MainActivity extends AppCompatActivity implements DiscoveryAgentEventListener, RobotChangedStateListener, ResponseListener{
 
     private static final String TAG = "MainActivity";
 
@@ -47,13 +49,26 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
     }
 
     public void turn(View view) {
+        if(connectedRobot == null)
+            return;
+
         connectedRobot.setZeroHeading();
         connectedRobot.rotate(90);
     }
 
     public void drive(View view) {
+        if(connectedRobot == null)
+            return;
+
         connectedRobot.setZeroHeading();
-        connectedRobot.drive(0, 1.0f);
+        connectedRobot.drive(0, 0.5f);
+    }
+
+    public void stop(View view) {
+        if(connectedRobot == null)
+            return;
+
+        connectedRobot.stop();
     }
 
     public void startDiscovery() {
@@ -83,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
                 connectedRobot = new Sphero(robot);
                 connectedRobot.setLed(0f, 1f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
+                connectedRobot.enableLocator(true);
+                connectedRobot.addResponseListener(this);
 
                 TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
                 statusMessage.setTextSize(40);
@@ -93,6 +110,27 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
             case Disconnected:
                 startDiscovery();
                 break;
+        }
+    }
+
+    @Override
+    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
+        System.out.println("Response: " + deviceResponse.toString());
+    }
+
+    @Override
+    public void handleStringResponse(String s, Robot robot) {
+        System.out.println("String Response: " + s);
+    }
+
+    @Override
+    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
+        System.out.println("Async Message: " + asyncMessage.toString());
+
+        if(asyncMessage instanceof DeviceSensorAsyncMessage) {
+            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
+            float positionY =  ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+            System.out.println("x: " + positionX + ", y: " + positionY);
         }
     }
 }
