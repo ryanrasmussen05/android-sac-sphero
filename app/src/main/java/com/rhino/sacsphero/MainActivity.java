@@ -1,47 +1,98 @@
 package com.rhino.sacsphero;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
-import com.orbotix.DualStackDiscoveryAgent;
-import com.orbotix.Ollie;
 import com.orbotix.Sphero;
-import com.orbotix.async.DeviceSensorAsyncMessage;
-import com.orbotix.classic.RobotClassic;
+import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
-import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
-import com.orbotix.common.internal.AsyncMessage;
-import com.orbotix.common.internal.DeviceResponse;
-import com.orbotix.le.RobotLE;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "SAC Sphero";
+    private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
+    private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
+
+    private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        discoveryAgent = DiscoveryAgentClassic.getInstance();
+        checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        discoveryAgent.stopDiscovery();
         if(connectedRobot != null) {
-            //should this be disconnect?
             connectedRobot.sleep();
         }
     }
 
+    //on Android M and higher, we must manually ask for "dangerous" permissions
+    public void checkPermissions(int requestCode) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
+
+            if(hasLocationPermission != PackageManager.PERMISSION_GRANTED) {
+                Log.e(TAG, "Location permission has not yet been granted");
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, requestCode);
+            } else {
+                Log.d(TAG, "Location permission already granted");
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode) {
+            case REQUEST_CODE_LOCATION_PERMISSION:
+                if(grantResults.length == 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Location is required to connect to Sphero!", Toast.LENGTH_LONG).show();
+                }
+                return;
+
+            case REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startDiscovery();
+                } else {
+                    Toast.makeText(this, "Location is required to connect to Sphero!", Toast.LENGTH_LONG).show();
+                }
+        }
+    }
+
+    public boolean hasProperPermissions() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
+            return hasLocationPermission == PackageManager.PERMISSION_GRANTED;
+        } else {
+            return true;
+        }
+    }
+
     public void start(View view) {
-        startDiscovery();
+        if(hasProperPermissions()) {
+            startDiscovery();
+        } else {
+            checkPermissions(REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY);
+        }
+
     }
 
     public void turn(View view) {
@@ -69,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     public void startDiscovery() {
         try {
-            DualStackDiscoveryAgent.getInstance().addRobotStateListener(this);
-            DualStackDiscoveryAgent.getInstance().startDiscovery(this);
+            discoveryAgent.addRobotStateListener(this);
+            discoveryAgent.startDiscovery(this);
         } catch (DiscoveryException e) {
             Log.e(TAG, "Could not start discovery. Reason: " + e.getMessage());
             e.printStackTrace();
@@ -81,21 +132,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
         switch (type) {
             case Online:
-                // Bluetooth Classic (Sphero)
-                if (robot instanceof RobotClassic) {
-                    connectedRobot = new Sphero(robot);
-                }
-                // Bluetooth LE (Ollie)
-                if (robot instanceof RobotLE) {
-                    connectedRobot = new Ollie(robot);
-                }
+                connectedRobot = new Sphero(robot);
+                discoveryAgent.stopDiscovery();
 
-                DualStackDiscoveryAgent.getInstance().stopDiscovery();
-
-                connectedRobot.setLed(0f, 1f, 0f);
+                connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
-                connectedRobot.enableLocator(true);
-                //connectedRobot.addResponseListener(this);
 
                 TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
                 statusMessage.setTextSize(40);
@@ -108,25 +149,4 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 break;
         }
     }
-
-//    @Override
-//    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-//        System.out.println("Response: " + deviceResponse.toString());
-//    }
-//
-//    @Override
-//    public void handleStringResponse(String s, Robot robot) {
-//        System.out.println("String Response: " + s);
-//    }
-//
-//    @Override
-//    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-//        System.out.println("Async Message: " + asyncMessage.toString());
-//
-//        if(asyncMessage instanceof DeviceSensorAsyncMessage) {
-//            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
-//            float positionY =  ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
-//            System.out.println("x: " + positionX + ", y: " + positionY);
-//        }
-//    }
 }
