@@ -1,6 +1,8 @@
 package com.rhino.sacsphero;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         discoveryAgent.stopDiscovery();
         if(connectedRobot != null) {
             connectedRobot.sleep();
+            connectedRobot = null;
         }
     }
 
@@ -120,12 +123,26 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     public void startDiscovery() {
         try {
+            showConnectionDialog();
             discoveryAgent.addRobotStateListener(this);
             discoveryAgent.startDiscovery(this);
         } catch (DiscoveryException e) {
             Log.e(TAG, "Could not start discovery. Reason: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public void showConnectionDialog() {
+        ProgressDialog connectionDialog = new ProgressDialog(this);
+        connectionDialog.setTitle("Connecting");
+        connectionDialog.setMessage("Looking for Sphero");
+        connectionDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                discoveryAgent.stopDiscovery();
+            }
+        });
+        connectionDialog.show();
     }
 
     @Override
@@ -147,6 +164,21 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             case Disconnected:
                 startDiscovery();
                 break;
+
+            case FailedConnect:
+                Log.e(TAG, "FAILED CONNECT");
+                break;
+
+            case Offline:
+                Log.e(TAG, "OFFLINE");
+                break;
+
+            case Connecting:
+                Log.e(TAG, "CONNECTING");
+                break;
+
+            case Connected:
+                Log.e(TAG, "CONNECTED");
         }
     }
 }
