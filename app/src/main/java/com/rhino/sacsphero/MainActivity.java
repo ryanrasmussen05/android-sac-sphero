@@ -7,25 +7,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.orbotix.ConvenienceRobot;
+import com.orbotix.DualStackDiscoveryAgent;
+import com.orbotix.Ollie;
 import com.orbotix.Sphero;
 import com.orbotix.async.DeviceSensorAsyncMessage;
-import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.common.DiscoveryAgent;
-import com.orbotix.common.DiscoveryAgentEventListener;
+import com.orbotix.classic.RobotClassic;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
+import com.orbotix.le.RobotLE;
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity implements DiscoveryAgentEventListener, RobotChangedStateListener, ResponseListener{
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
 
     private static final String TAG = "MainActivity";
-
-    private DiscoveryAgent discoveryAgent;
     private ConvenienceRobot connectedRobot;
 
     @Override
@@ -37,10 +34,9 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
     @Override
     protected void onPause() {
         super.onPause();
-        if (discoveryAgent != null) {
-            for (Robot robot : discoveryAgent.getConnectedRobots()) {
-                robot.sleep();
-            }
+        if(connectedRobot != null) {
+            //should this be disconnect?
+            connectedRobot.sleep();
         }
     }
 
@@ -73,10 +69,8 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
 
     public void startDiscovery() {
         try {
-            discoveryAgent = DiscoveryAgentClassic.getInstance();
-            discoveryAgent.addDiscoveryListener(this);
-            discoveryAgent.addRobotStateListener(this);
-            discoveryAgent.startDiscovery(this);
+            DualStackDiscoveryAgent.getInstance().addRobotStateListener(this);
+            DualStackDiscoveryAgent.getInstance().startDiscovery(this);
         } catch (DiscoveryException e) {
             Log.e(TAG, "Could not start discovery. Reason: " + e.getMessage());
             e.printStackTrace();
@@ -84,22 +78,24 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
     }
 
     @Override
-    public void handleRobotsAvailable(List<Robot> robots) {
-        discoveryAgent.connect(robots.get(0));
-    }
-
-    @Override
-    public void changedState(Robot robot, RobotChangedStateNotificationType type) {
+    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
         switch (type) {
             case Online:
-                discoveryAgent.stopDiscovery();
-                discoveryAgent.removeDiscoveryListener(this);
+                // Bluetooth Classic (Sphero)
+                if (robot instanceof RobotClassic) {
+                    connectedRobot = new Sphero(robot);
+                }
+                // Bluetooth LE (Ollie)
+                if (robot instanceof RobotLE) {
+                    connectedRobot = new Ollie(robot);
+                }
 
-                connectedRobot = new Sphero(robot);
+                DualStackDiscoveryAgent.getInstance().stopDiscovery();
+
                 connectedRobot.setLed(0f, 1f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
                 connectedRobot.enableLocator(true);
-                connectedRobot.addResponseListener(this);
+                //connectedRobot.addResponseListener(this);
 
                 TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
                 statusMessage.setTextSize(40);
@@ -113,24 +109,24 @@ public class MainActivity extends AppCompatActivity implements DiscoveryAgentEve
         }
     }
 
-    @Override
-    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-        System.out.println("Response: " + deviceResponse.toString());
-    }
-
-    @Override
-    public void handleStringResponse(String s, Robot robot) {
-        System.out.println("String Response: " + s);
-    }
-
-    @Override
-    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-        System.out.println("Async Message: " + asyncMessage.toString());
-
-        if(asyncMessage instanceof DeviceSensorAsyncMessage) {
-            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
-            float positionY =  ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
-            System.out.println("x: " + positionX + ", y: " + positionY);
-        }
-    }
+//    @Override
+//    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
+//        System.out.println("Response: " + deviceResponse.toString());
+//    }
+//
+//    @Override
+//    public void handleStringResponse(String s, Robot robot) {
+//        System.out.println("String Response: " + s);
+//    }
+//
+//    @Override
+//    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
+//        System.out.println("Async Message: " + asyncMessage.toString());
+//
+//        if(asyncMessage instanceof DeviceSensorAsyncMessage) {
+//            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
+//            float positionY =  ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+//            System.out.println("x: " + positionX + ", y: " + positionY);
+//        }
+//    }
 }
