@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
 
+    private ProgressDialog connectionDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     protected void onPause() {
         super.onPause();
-        discoveryAgent.stopDiscovery();
+
+        if(discoveryAgent.isDiscovering()) {
+            discoveryAgent.stopDiscovery();
+        }
+        discoveryAgent.removeRobotStateListener(this);
+
         if(connectedRobot != null) {
             connectedRobot.sleep();
             connectedRobot = null;
@@ -95,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         } else {
             checkPermissions(REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY);
         }
-
     }
 
     public void turn(View view) {
@@ -125,7 +131,9 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         try {
             showConnectionDialog();
             discoveryAgent.addRobotStateListener(this);
-            discoveryAgent.startDiscovery(this);
+            if(!discoveryAgent.isDiscovering()) {
+                discoveryAgent.startDiscovery(this);
+            }
         } catch (DiscoveryException e) {
             Log.e(TAG, "Could not start discovery. Reason: " + e.getMessage());
             e.printStackTrace();
@@ -133,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void showConnectionDialog() {
-        ProgressDialog connectionDialog = new ProgressDialog(this);
+        connectionDialog = new ProgressDialog(this);
         connectionDialog.setTitle("Connecting");
         connectionDialog.setMessage("Looking for Sphero");
         connectionDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
@@ -159,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 statusMessage.setTextSize(40);
                 statusMessage.setText("Connected to: " + robot.getName());
 
+                connectionDialog.dismiss();
                 break;
 
             case Disconnected:
@@ -174,10 +183,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 break;
 
             case Connecting:
+                connectionDialog.setMessage("Connecting to: " + robot.getName());
                 Log.e(TAG, "CONNECTING");
                 break;
 
             case Connected:
+                connectionDialog.setMessage("Connected to: " + robot.getName());
                 Log.e(TAG, "CONNECTED");
         }
     }
