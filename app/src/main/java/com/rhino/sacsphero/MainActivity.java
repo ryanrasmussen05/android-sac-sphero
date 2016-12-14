@@ -15,12 +15,18 @@ import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
+import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
+import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
+import com.orbotix.common.internal.AsyncMessage;
+import com.orbotix.common.internal.DeviceResponse;
+import com.orbotix.common.sensor.SensorFlag;
+import com.orbotix.subsystem.SensorControl;
 
-public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
@@ -162,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
+                connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+                connectedRobot.addResponseListener(this);
 
                 TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
                 statusMessage.setTextSize(40);
@@ -190,6 +198,27 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             case Connected:
                 connectionDialog.setMessage("Connected to: " + robot.getName());
                 Log.e(TAG, "CONNECTED");
+        }
+    }
+
+    @Override
+    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
+        Log.d(TAG, deviceResponse.toString());
+    }
+
+    @Override
+    public void handleStringResponse(String s, Robot robot) {
+        Log.d(TAG, s);
+    }
+
+    @Override
+    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
+        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
+            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
+            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+            Log.d(TAG, "x: " + positionX + ", y: " + positionY);
+        } else {
+            Log.d(TAG, asyncMessage.toString());
         }
     }
 }
