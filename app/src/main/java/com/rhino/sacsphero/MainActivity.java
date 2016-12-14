@@ -9,13 +9,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
-import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.ResponseListener;
@@ -49,15 +51,31 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     protected void onPause() {
         super.onPause();
+        disconnectSphero();
+    }
 
-        if(discoveryAgent.isDiscovering()) {
-            discoveryAgent.stopDiscovery();
-        }
-        discoveryAgent.removeRobotStateListener(this);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
 
-        if(connectedRobot != null) {
-            connectedRobot.sleep();
-            connectedRobot = null;
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.disconnect_sphero).setVisible(connectedRobot != null);
+        menu.findItem(R.id.reset_game).setVisible(connectedRobot != null);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.disconnect_sphero:
+                disconnectSphero();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -153,16 +171,31 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         connectionDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                discoveryAgent.stopDiscovery();
+                disconnectSphero();
             }
         });
         connectionDialog.show();
+    }
+
+    public void disconnectSphero() {
+        if(discoveryAgent.isDiscovering()) {
+            discoveryAgent.stopDiscovery();
+        }
+        discoveryAgent.removeRobotStateListener(this);
+
+        if(connectedRobot != null) {
+            connectedRobot.disconnect();
+            connectedRobot = null;
+        }
+
+        invalidateOptionsMenu();
     }
 
     @Override
     public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
         switch (type) {
             case Online:
+                Log.e(TAG, "ONLINE");
                 connectedRobot = new Sphero(robot);
                 discoveryAgent.stopDiscovery();
 
@@ -176,10 +209,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 statusMessage.setText("Connected to: " + robot.getName());
 
                 connectionDialog.dismiss();
+                invalidateOptionsMenu();
                 break;
 
             case Disconnected:
-                startDiscovery();
+                //TODO notify user to reconnect
+                Log.e(TAG, "DISCONNECTED");
                 break;
 
             case FailedConnect:
@@ -203,22 +238,21 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     @Override
     public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-        Log.d(TAG, deviceResponse.toString());
+        //Log.d(TAG, deviceResponse.toString());
     }
 
     @Override
     public void handleStringResponse(String s, Robot robot) {
-        Log.d(TAG, s);
+        //Log.d(TAG, s);
     }
 
     @Override
     public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
-            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
-            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
-            Log.d(TAG, "x: " + positionX + ", y: " + positionY);
-        } else {
-            Log.d(TAG, asyncMessage.toString());
-        }
+//        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
+//            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
+//            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+//        } else {
+//            Log.d(TAG, asyncMessage.toString());
+//        }
     }
 }
