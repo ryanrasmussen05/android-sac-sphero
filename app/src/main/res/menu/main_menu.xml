@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/disconnect_sphero"
+        android:title="@string/disconnect_sphero" />
+    <item android:id="@+id/sleep_sphero"
+        android:title="@string/sleep_sphero" />
+    <item android:id="@+id/exit_game"
+        android:title="@string/exit_game" />
+</menu>

@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
+    private boolean inGame;
 
     private ProgressDialog connectionDialog;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
@@ -57,14 +59,22 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.disconnect_sphero).setVisible(connectedRobot != null);
-        menu.findItem(R.id.reset_game).setVisible(connectedRobot != null);
+        if(!inGame) {
+            menu.findItem(R.id.disconnect_sphero).setVisible(connectedRobot != null);
+            menu.findItem(R.id.sleep_sphero).setVisible(connectedRobot != null);
+            menu.findItem(R.id.exit_game).setVisible(false);
+        } else {
+            menu.findItem(R.id.disconnect_sphero).setVisible(false);
+            menu.findItem(R.id.sleep_sphero).setVisible(false);
+            menu.findItem(R.id.exit_game).setVisible(true);
+        }
+
         return true;
     }
 
@@ -73,6 +83,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         switch(item.getItemId()) {
             case R.id.disconnect_sphero:
                 disconnectSphero();
+                return true;
+            case R.id.sleep_sphero:
+                shutdownSphero();
+                return true;
+            case R.id.exit_game:
+                exitLabyrinth();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -128,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
     }
 
+    //TODO maybe move these
     public void turn(View view) {
         if(connectedRobot == null)
             return;
@@ -168,6 +185,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         connectionDialog = new ProgressDialog(this);
         connectionDialog.setTitle("Connecting");
         connectionDialog.setMessage("Looking for Sphero");
+        connectionDialog.setCanceledOnTouchOutside(false);
+        connectionDialog.setCancelable(false);
         connectionDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -191,6 +210,20 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         invalidateOptionsMenu();
     }
 
+    public void shutdownSphero() {
+        if(discoveryAgent.isDiscovering()) {
+            discoveryAgent.stopDiscovery();
+        }
+        discoveryAgent.removeRobotStateListener(this);
+
+        if(connectedRobot != null) {
+            connectedRobot.sleep();
+            connectedRobot = null;
+        }
+
+        invalidateOptionsMenu();
+    }
+
     @Override
     public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
         switch (type) {
@@ -202,36 +235,30 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
                 connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
-                connectedRobot.addResponseListener(this);
 
                 TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
-                statusMessage.setTextSize(40);
+                statusMessage.setTextSize(20);
                 statusMessage.setText("Connected to: " + robot.getName());
+
+                findViewById(R.id.connectButton).setVisibility(View.GONE);
+                findViewById(R.id.startLabyrinthButton).setVisibility(View.VISIBLE);
 
                 connectionDialog.dismiss();
                 invalidateOptionsMenu();
                 break;
 
             case Disconnected:
-                //TODO notify user to reconnect
+                handleDisconnect();
                 Log.e(TAG, "DISCONNECTED");
                 break;
 
-            case FailedConnect:
-                Log.e(TAG, "FAILED CONNECT");
-                break;
-
-            case Offline:
-                Log.e(TAG, "OFFLINE");
-                break;
-
             case Connecting:
-                connectionDialog.setMessage("Connecting to: " + robot.getName());
+                connectionDialog.setMessage("Found: " + robot.getName());
                 Log.e(TAG, "CONNECTING");
                 break;
 
             case Connected:
-                connectionDialog.setMessage("Connected to: " + robot.getName());
+                connectionDialog.setMessage("Connecting to: " + robot.getName());
                 Log.e(TAG, "CONNECTED");
         }
     }
@@ -254,5 +281,21 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 //        } else {
 //            Log.d(TAG, asyncMessage.toString());
 //        }
+    }
+
+    public void handleDisconnect() {
+        //TODO
+    }
+
+    public void startLabyrinth(View view) {
+        setContentView(R.layout.activity_labyrinth);
+        inGame = true;
+        invalidateOptionsMenu();
+    }
+
+    public void exitLabyrinth() {
+        setContentView(R.layout.activity_main);
+        inGame = false;
+        invalidateOptionsMenu();
     }
 }
