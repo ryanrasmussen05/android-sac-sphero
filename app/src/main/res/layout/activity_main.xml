@@ -10,7 +10,7 @@
         android:id="@+id/connectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search for Sphero"
+        android:text="@string/connect_button_text"
         android:onClick="start"
         android:layout_gravity="center" />
 
@@ -18,14 +18,14 @@
         android:id="@+id/startLabyrinthButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Labyrinth!"
-        android:onClick="startLabyrinth"
-        android:visibility="gone"/>
+        android:text="@string/start_labyrinth_button_text"
+        android:onClick="startLabyrinth" />
 
     <TextView
         android:id="@+id/statusMessage"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

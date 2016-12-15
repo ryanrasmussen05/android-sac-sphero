@@ -51,6 +51,17 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(inGame) {
+            setupLabyrinthScreen();
+        } else {
+            setupHomeScreen();
+        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         disconnectSphero();
@@ -207,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             connectedRobot = null;
         }
 
+        discoveryAgent.disconnectAll();
         invalidateOptionsMenu();
     }
 
@@ -221,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             connectedRobot = null;
         }
 
+        setupHomeScreen();
         invalidateOptionsMenu();
     }
 
@@ -236,12 +249,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 connectedRobot.setBackLedBrightness(1.0f);
                 connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
 
-                TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
-                statusMessage.setTextSize(20);
-                statusMessage.setText("Connected to: " + robot.getName());
-
-                findViewById(R.id.connectButton).setVisibility(View.GONE);
-                findViewById(R.id.startLabyrinthButton).setVisibility(View.VISIBLE);
+                if(inGame) {
+                    setupLabyrinthScreen();
+                } else {
+                    setupHomeScreen();
+                }
 
                 connectionDialog.dismiss();
                 invalidateOptionsMenu();
@@ -285,17 +297,53 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     public void handleDisconnect() {
         //TODO
+        Log.e(TAG, "UNEXPECTED DISCONNECT");
     }
 
     public void startLabyrinth(View view) {
         setContentView(R.layout.activity_labyrinth);
+        setupLabyrinthScreen();
         inGame = true;
         invalidateOptionsMenu();
     }
 
     public void exitLabyrinth() {
-        setContentView(R.layout.activity_main);
         inGame = false;
+        setContentView(R.layout.activity_main);
+        setupHomeScreen();
         invalidateOptionsMenu();
+    }
+
+    private void setupHomeScreen() {
+        if(connectedRobot != null) {
+            findViewById(R.id.connectButton).setVisibility(View.GONE);
+            findViewById(R.id.startLabyrinthButton).setVisibility(View.VISIBLE);
+
+            TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
+            statusMessage.setTextSize(20);
+            statusMessage.setText(getString(R.string.connect_message, connectedRobot.getRobot().getName()));
+        } else {
+            findViewById(R.id.connectButton).setVisibility(View.VISIBLE);
+            findViewById(R.id.startLabyrinthButton).setVisibility(View.GONE);
+
+            TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
+            statusMessage.setText(null);
+        }
+    }
+
+    private void setupLabyrinthScreen() {
+        if(connectedRobot != null) {
+            findViewById(R.id.reConnectButton).setVisibility(View.GONE);
+
+            findViewById(R.id.turnButton).setEnabled(true);
+            findViewById(R.id.driveButton).setEnabled(true);
+            findViewById(R.id.stopButton).setEnabled(true);
+        } else {
+            findViewById(R.id.reConnectButton).setVisibility(View.VISIBLE);
+
+            findViewById(R.id.turnButton).setEnabled(false);
+            findViewById(R.id.driveButton).setEnabled(false);
+            findViewById(R.id.stopButton).setEnabled(false);
+        }
     }
 }
