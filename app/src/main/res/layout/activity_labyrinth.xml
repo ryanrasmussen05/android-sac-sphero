@@ -3,33 +3,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    android:gravity="center_horizontal">
 
     <Button
         android:id="@+id/reConnectButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reconnect_sphero"
-        android:onClick="start" />
+        android:onClick="start"
+        android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/turnButton"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:text="@string/number_of_moves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/numberOfMoves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Turn"
-        android:onClick="turn"/>
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
-    <Button
-        android:id="@+id/driveButton"
+        <TextView
+            android:text="@string/turn_section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:text="@string/turn_left_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/turnLeftButton"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:longClickable="false"
+                android:ems="10"
+                android:id="@+id/turnInput"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="@string/turn_input_hint" />
+
+            <Button
+                android:text="@string/turn_right_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/turnRightButton"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Drive"
-        android:onClick="drive"/>
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stop"
-        android:onClick="stop"/>
+        <TextView
+            android:text="@string/drive_section_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/drive_five_centimeters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driveFiveButton"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="@string/drive_ten_centimeters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driveTenButton"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="@string/drive_twenty_centimeters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driveTwentyButton"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

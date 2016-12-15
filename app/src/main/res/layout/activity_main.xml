@@ -3,16 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    android:gravity="center">
 
     <Button
         android:id="@+id/connectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/connect_button_text"
-        android:onClick="start"
-        android:layout_gravity="center" />
+        android:onClick="start" />
 
     <Button
         android:id="@+id/startLabyrinthButton"
@@ -23,8 +22,7 @@
 
     <TextView
         android:id="@+id/statusMessage"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp" />
 

@@ -7,4 +7,13 @@
     <string name="start_labyrinth_button_text">Start Labyrinth!</string>
     <string name="reconnect_sphero">Reconnect to Sphero</string>
     <string name="connect_message">Connected to: %1$s</string>
+    <string name="turn_section_label">Turn</string>
+    <string name="turn_left_button_text">Turn Left</string>
+    <string name="turn_right_button_text">Turn Right</string>
+    <string name="turn_input_hint">Degrees</string>
+    <string name="drive_section_label">Drive</string>
+    <string name="drive_five_centimeters">5 cm</string>
+    <string name="drive_ten_centimeters">10 cm</string>
+    <string name="drive_twenty_centimeters">20 cm</string>
+    <string name="number_of_moves">Number of moves:</string>
 </resources>

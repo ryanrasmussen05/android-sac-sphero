@@ -8,11 +8,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +29,15 @@ import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
 import com.orbotix.common.sensor.SensorFlag;
 import com.orbotix.subsystem.SensorControl;
+import com.rhino.sacsphero.util.InputFilterMinMax;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
+
+    private int numMoves;
 
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_main);
 
         inGame = false;
+        numMoves = 0;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
@@ -304,6 +310,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
         inGame = true;
+        numMoves = 0;
         invalidateOptionsMenu();
     }
 
@@ -335,15 +342,24 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         if(connectedRobot != null) {
             findViewById(R.id.reConnectButton).setVisibility(View.GONE);
 
-            findViewById(R.id.turnButton).setEnabled(true);
-            findViewById(R.id.driveButton).setEnabled(true);
-            findViewById(R.id.stopButton).setEnabled(true);
+            findViewById(R.id.driveFiveButton).setEnabled(true);
+            findViewById(R.id.driveTenButton).setEnabled(true);
+            findViewById(R.id.driveTwentyButton).setEnabled(true);
+            findViewById(R.id.turnLeftButton).setEnabled(true);
+            findViewById(R.id.turnRightButton).setEnabled(true);
+            findViewById(R.id.turnInput).setEnabled(true);
         } else {
             findViewById(R.id.reConnectButton).setVisibility(View.VISIBLE);
 
-            findViewById(R.id.turnButton).setEnabled(false);
-            findViewById(R.id.driveButton).setEnabled(false);
-            findViewById(R.id.stopButton).setEnabled(false);
+            findViewById(R.id.driveFiveButton).setEnabled(false);
+            findViewById(R.id.driveTenButton).setEnabled(false);
+            findViewById(R.id.driveTwentyButton).setEnabled(false);
+            findViewById(R.id.turnLeftButton).setEnabled(false);
+            findViewById(R.id.turnRightButton).setEnabled(false);
+            findViewById(R.id.turnInput).setEnabled(false);
         }
+
+        ((TextView) findViewById(R.id.numberOfMoves)).setText(String.valueOf(numMoves));
+        ((EditText) findViewById(R.id.turnInput)).setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
     }
 }
