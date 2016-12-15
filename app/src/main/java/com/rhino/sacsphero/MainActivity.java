@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
+import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.ResponseListener;
@@ -29,7 +30,9 @@ import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
 import com.orbotix.common.sensor.SensorFlag;
 import com.orbotix.subsystem.SensorControl;
+import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
+import com.rhino.sacsphero.util.LocationHelper;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
+    private LocationHelper locationHelper;
     private boolean inGame;
 
     private ProgressDialog connectionDialog;
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         inGame = false;
         numMoves = 0;
+        locationHelper = new LocationHelper();
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
@@ -112,20 +117,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
     }
 
-    //on Android M and higher, we must manually ask for "dangerous" permissions
-    public void checkPermissions(int requestCode) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
-
-            if(hasLocationPermission != PackageManager.PERMISSION_GRANTED) {
-                Log.e(TAG, "Location permission has not yet been granted");
-                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, requestCode);
-            } else {
-                Log.d(TAG, "Location permission already granted");
-            }
-        }
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch(requestCode) {
@@ -144,6 +135,76 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
     }
 
+    @Override
+    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
+        switch (type) {
+            case Online:
+                Log.e(TAG, "ONLINE");
+                connectedRobot = new Sphero(robot);
+                discoveryAgent.stopDiscovery();
+
+                connectedRobot.setLed(1f, 0f, 0f);
+                connectedRobot.setBackLedBrightness(1.0f);
+                connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+
+                if(inGame) {
+                    setupLabyrinthScreen();
+                } else {
+                    setupHomeScreen();
+                }
+
+                connectionDialog.dismiss();
+                invalidateOptionsMenu();
+                break;
+
+            case Disconnected:
+                handleDisconnect();
+                Log.e(TAG, "DISCONNECTED");
+                break;
+
+            case Connecting:
+                connectionDialog.setMessage("Found: " + robot.getName());
+                Log.e(TAG, "CONNECTING");
+                break;
+
+            case Connected:
+                connectionDialog.setMessage("Connecting to: " + robot.getName());
+                Log.e(TAG, "CONNECTED");
+        }
+    }
+
+    @Override
+    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
+    }
+
+    @Override
+    public void handleStringResponse(String s, Robot robot) {
+    }
+
+    @Override
+    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
+        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
+            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
+            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+
+            handleLocationUpdate(positionX, positionY);
+        }
+    }
+
+    //on Android M and higher, we must manually ask for "dangerous" permissions
+    public void checkPermissions(int requestCode) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
+
+            if(hasLocationPermission != PackageManager.PERMISSION_GRANTED) {
+                Log.e(TAG, "Location permission has not yet been granted");
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, requestCode);
+            } else {
+                Log.d(TAG, "Location permission already granted");
+            }
+        }
+    }
+
     public boolean hasProperPermissions() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             int hasLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -159,30 +220,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         } else {
             checkPermissions(REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY);
         }
-    }
-
-    //TODO maybe move these
-    public void turn(View view) {
-        if(connectedRobot == null)
-            return;
-
-        connectedRobot.setZeroHeading();
-        connectedRobot.rotate(90);
-    }
-
-    public void drive(View view) {
-        if(connectedRobot == null)
-            return;
-
-        connectedRobot.setZeroHeading();
-        connectedRobot.drive(0, 0.5f);
-    }
-
-    public void stop(View view) {
-        if(connectedRobot == null)
-            return;
-
-        connectedRobot.stop();
     }
 
     public void startDiscovery() {
@@ -243,62 +280,60 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         invalidateOptionsMenu();
     }
 
-    @Override
-    public void handleRobotChangedState(Robot robot, RobotChangedStateNotificationType type) {
-        switch (type) {
-            case Online:
-                Log.e(TAG, "ONLINE");
-                connectedRobot = new Sphero(robot);
-                discoveryAgent.stopDiscovery();
+    public void turn(View view) {
+        if(connectedRobot == null)
+            return;
 
-                connectedRobot.setLed(1f, 0f, 0f);
-                connectedRobot.setBackLedBrightness(1.0f);
-                connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+        String turnValue = ((EditText) findViewById(R.id.turnInput)).getText().toString();
 
-                if(inGame) {
-                    setupLabyrinthScreen();
-                } else {
-                    setupHomeScreen();
-                }
+        if(turnValue.length() > 0) {
+            int heading = Integer.parseInt(turnValue);
 
-                connectionDialog.dismiss();
-                invalidateOptionsMenu();
-                break;
+            if(view.getId() == R.id.turnLeftButton) {
+                heading *= -1;
+            }
 
-            case Disconnected:
-                handleDisconnect();
-                Log.e(TAG, "DISCONNECTED");
-                break;
+            DriveHelper.Turn(connectedRobot, heading);
 
-            case Connecting:
-                connectionDialog.setMessage("Found: " + robot.getName());
-                Log.e(TAG, "CONNECTING");
-                break;
-
-            case Connected:
-                connectionDialog.setMessage("Connecting to: " + robot.getName());
-                Log.e(TAG, "CONNECTED");
+            numMoves++;
+            updateNumberMoves();
         }
     }
 
-    @Override
-    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-        //Log.d(TAG, deviceResponse.toString());
+    public void drive(View view) {
+        if(connectedRobot == null)
+            return;
+
+        int distance;
+
+        switch(view.getId()) {
+            case R.id.driveFiveButton:
+                distance = 5;
+                break;
+            case R.id.driveTenButton:
+                distance = 10;
+                break;
+            case R.id.driveTwentyButton:
+            default:
+                distance = 20;
+        }
+
+        locationHelper.startTracking(distance);
+        DriveHelper.Drive(connectedRobot);
+
+        numMoves++;
+        updateNumberMoves();
     }
 
-    @Override
-    public void handleStringResponse(String s, Robot robot) {
-        //Log.d(TAG, s);
-    }
+    public void handleLocationUpdate(float positionX, float positionY) {
+        locationHelper.updateLocation(positionX, positionY);
 
-    @Override
-    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-//        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
-//            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
-//            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
-//        } else {
-//            Log.d(TAG, asyncMessage.toString());
-//        }
+        if(connectedRobot == null)
+            return;
+
+        if(locationHelper.shouldStop()) {
+            DriveHelper.Stop(connectedRobot);
+        }
     }
 
     public void handleDisconnect() {
@@ -359,7 +394,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             findViewById(R.id.turnInput).setEnabled(false);
         }
 
-        ((TextView) findViewById(R.id.numberOfMoves)).setText(String.valueOf(numMoves));
         ((EditText) findViewById(R.id.turnInput)).setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
+
+        updateNumberMoves();
+    }
+
+    private void updateNumberMoves() {
+        ((TextView) findViewById(R.id.numberOfMoves)).setText(String.valueOf(numMoves));
     }
 }

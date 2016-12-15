@@ -65,7 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/turnLeftButton"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="turn"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -83,7 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/turnRightButton"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="turn"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -112,6 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/driveFiveButton"
+                android:onClick="drive"
                 android:layout_weight="1" />
 
             <Button
@@ -119,6 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/driveTenButton"
+                android:onClick="drive"
                 android:layout_weight="1" />
 
             <Button
@@ -126,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/driveTwentyButton"
+                android:onClick="drive"
                 android:layout_weight="1" />
 
         </LinearLayout>
