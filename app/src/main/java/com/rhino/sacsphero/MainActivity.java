@@ -251,8 +251,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void start(View view) {
-        hideKeyboard(view);
-
         if(hasProperPermissions()) {
             startDiscovery();
         } else {
