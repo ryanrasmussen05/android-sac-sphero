@@ -28,11 +28,14 @@ import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
+import com.orbotix.common.sensor.DeviceSensorsData;
 import com.orbotix.common.sensor.SensorFlag;
 import com.orbotix.subsystem.SensorControl;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.LocationHelper;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
 
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
                 connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+                connectedRobot.addResponseListener(this);
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -184,10 +188,13 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
         if (asyncMessage instanceof DeviceSensorAsyncMessage) {
-            float positionX = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionX();
-            float positionY = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData().get(0).getLocatorData().getPositionY();
+            ArrayList<DeviceSensorsData> sensorDatas = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData();
 
-            handleLocationUpdate(positionX, positionY);
+            if (sensorDatas != null && sensorDatas.get(0) != null) {
+                float positionX = sensorDatas.get(0).getLocatorData().getPositionX();
+                float positionY = sensorDatas.get(0).getLocatorData().getPositionY();
+                handleLocationUpdate(positionX, positionY);
+            }
         }
     }
 
@@ -290,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             int heading = Integer.parseInt(turnValue);
 
             if(view.getId() == R.id.turnLeftButton) {
-                heading *= -1;
+                heading = 360 - heading;
             }
 
             DriveHelper.Turn(connectedRobot, heading);

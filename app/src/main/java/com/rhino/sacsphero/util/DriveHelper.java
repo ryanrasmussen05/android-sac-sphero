@@ -24,6 +24,6 @@ public class DriveHelper {
             return;
 
         connectedRobot.setZeroHeading();
-        connectedRobot.drive(0, 0.5f);
+        connectedRobot.drive(0, 0.2f);
     }
 }
