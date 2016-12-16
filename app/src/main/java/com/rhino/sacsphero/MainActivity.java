@@ -269,6 +269,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         discoveryAgent.disconnectAll();
+        setupHomeScreen();
         invalidateOptionsMenu();
     }
 
