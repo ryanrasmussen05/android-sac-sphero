@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:keepScreenOn="true"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
     <Button
         android:id="@+id/reConnectButton"
@@ -13,31 +15,6 @@
         android:text="@string/reconnect_sphero"
         android:onClick="start"
         android:layout_marginTop="20dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/number_of_moves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:id="@+id/numberOfMoves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -77,7 +54,8 @@
                 android:id="@+id/turnInput"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:hint="@string/turn_input_hint" />
+                android:hint="@string/turn_input_hint"
+                android:selectAllOnFocus="true"/>
 
             <Button
                 android:text="@string/turn_right_button_text"

@@ -1,6 +1,7 @@
 package com.rhino.sacsphero;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,7 @@ import com.orbotix.common.sensor.DeviceSensorsData;
 import com.orbotix.common.sensor.SensorFlag;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
+import com.rhino.sacsphero.util.InputFocusChangeListener;
 import com.rhino.sacsphero.util.LocationHelper;
 
 import java.util.ArrayList;
@@ -46,11 +49,10 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
 
-    private int numMoves;
-
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
     private LocationHelper locationHelper;
+
     private boolean inGame;
 
     private ProgressDialog connectionDialog;
@@ -61,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_main);
 
         inGame = false;
-        numMoves = 0;
         locationHelper = new LocationHelper();
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
@@ -111,9 +112,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         switch(item.getItemId()) {
             case R.id.disconnect_sphero:
                 disconnectSphero();
+                setupHomeScreen();
                 return true;
             case R.id.sleep_sphero:
                 shutdownSphero();
+                setupHomeScreen();
                 return true;
             case R.id.exit_game:
                 exitLabyrinth();
@@ -218,6 +221,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
     }
 
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        findViewById(R.id.turnInput).clearFocus();
+    }
+
     //on Android M and higher, we must manually ask for "dangerous" permissions
     public void checkPermissions(int requestCode) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -242,6 +251,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void start(View view) {
+        hideKeyboard(view);
+
         if(hasProperPermissions()) {
             startDiscovery();
         } else {
@@ -288,7 +299,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             connectedRobot = null;
         }
 
-        setupHomeScreen();
         invalidateOptionsMenu();
         //EXPERIMENTAL TODO
         disconnectAllRobots();
@@ -305,7 +315,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             connectedRobot = null;
         }
 
-        setupHomeScreen();
         invalidateOptionsMenu();
         //EXPERIMENTAL TODO
         disconnectAllRobots();
@@ -323,6 +332,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void turn(View view) {
+        hideKeyboard(view);
+
         if(connectedRobot == null)
             return;
 
@@ -336,13 +347,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             }
 
             DriveHelper.Turn(connectedRobot, heading);
-
-            numMoves++;
-            updateNumberMoves();
         }
     }
 
     public void drive(View view) {
+        hideKeyboard(view);
+
         if(connectedRobot == null)
             return;
 
@@ -362,9 +372,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         locationHelper.startTracking(distance);
         DriveHelper.Drive(connectedRobot);
-
-        numMoves++;
-        updateNumberMoves();
     }
 
     public void handleLocationUpdate(float positionX, float positionY) {
@@ -384,10 +391,10 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void startLabyrinth(View view) {
+        hideKeyboard(view);
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
         inGame = true;
-        numMoves = 0;
         invalidateOptionsMenu();
     }
 
@@ -436,12 +443,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             findViewById(R.id.turnInput).setEnabled(false);
         }
 
-        ((EditText) findViewById(R.id.turnInput)).setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
-
-        updateNumberMoves();
-    }
-
-    private void updateNumberMoves() {
-        ((TextView) findViewById(R.id.numberOfMoves)).setText(String.valueOf(numMoves));
+        EditText turnInput = (EditText) findViewById(R.id.turnInput);
+        turnInput.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
+        turnInput.setOnFocusChangeListener(new InputFocusChangeListener(this));
     }
 }
