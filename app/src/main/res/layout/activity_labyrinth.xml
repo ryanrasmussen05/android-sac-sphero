@@ -15,31 +15,6 @@
         android:layout_marginTop="20dp" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/number_of_moves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:layout_marginRight="10dp" />
-
-        <TextView
-            android:id="@+id/numberOfMoves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

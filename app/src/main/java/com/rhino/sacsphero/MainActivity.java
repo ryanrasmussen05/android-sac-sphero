@@ -43,11 +43,10 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
 
-    private int numMoves;
-
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
     private LocationHelper locationHelper;
+
     private boolean inGame;
 
     private ProgressDialog connectionDialog;
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_main);
 
         inGame = false;
-        numMoves = 0;
         locationHelper = new LocationHelper();
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
@@ -302,9 +300,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             }
 
             DriveHelper.Turn(connectedRobot, heading);
-
-            numMoves++;
-            updateNumberMoves();
         }
     }
 
@@ -328,9 +323,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         locationHelper.startTracking(distance);
         DriveHelper.Drive(connectedRobot);
-
-        numMoves++;
-        updateNumberMoves();
     }
 
     public void handleLocationUpdate(float positionX, float positionY) {
@@ -353,7 +345,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
         inGame = true;
-        numMoves = 0;
         invalidateOptionsMenu();
     }
 
@@ -403,11 +394,5 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         ((EditText) findViewById(R.id.turnInput)).setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
-
-        updateNumberMoves();
-    }
-
-    private void updateNumberMoves() {
-        ((TextView) findViewById(R.id.numberOfMoves)).setText(String.valueOf(numMoves));
     }
 }
