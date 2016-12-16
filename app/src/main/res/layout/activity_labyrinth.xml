@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:keepScreenOn="true"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
     <Button
         android:id="@+id/reConnectButton"
@@ -52,7 +54,8 @@
                 android:id="@+id/turnInput"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:hint="@string/turn_input_hint" />
+                android:hint="@string/turn_input_hint"
+                android:selectAllOnFocus="true"/>
 
             <Button
                 android:text="@string/turn_right_button_text"
