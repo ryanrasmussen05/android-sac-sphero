@@ -22,6 +22,10 @@ import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
 import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
+import com.orbotix.command.GetOdometerCommand;
+import com.orbotix.command.GetOdometerResponse;
+import com.orbotix.command.RotationRateCommand;
+import com.orbotix.command.SetDataStreamingCommand;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
@@ -30,7 +34,6 @@ import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
 import com.orbotix.common.sensor.DeviceSensorsData;
 import com.orbotix.common.sensor.SensorFlag;
-import com.orbotix.subsystem.SensorControl;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.LocationHelper;
@@ -148,8 +151,17 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
-                connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
                 connectedRobot.addResponseListener(this);
+
+                //EXPERIMENTAL TODO
+                //rate is 400/10 per second, packet size is 1, enable locator data, 0 is unlimited streaming
+                connectedRobot.sendCommand(new SetDataStreamingCommand(LocationHelper.STREAMING_RATE_DIVISOR, 1, SensorFlag.LOCATOR.longValue(), 0));
+                //connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+
+                //EXPERIMENTAL TODO
+                //set rotation rate
+                //between 0 and 1
+                connectedRobot.sendCommand(new RotationRateCommand(0.5f));
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -179,6 +191,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     @Override
     public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
+        //EXPERIMENTAL TODO
+        if(deviceResponse instanceof GetOdometerResponse) {
+            String message = "ODOMETER: " + String.valueOf(((GetOdometerResponse) deviceResponse).getDistanceInCentimeters());
+            Log.e(TAG, message);
+        }
     }
 
     @Override
@@ -191,10 +208,13 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             ArrayList<DeviceSensorsData> sensorDatas = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData();
 
             if (sensorDatas != null && sensorDatas.get(0) != null) {
-                float positionX = sensorDatas.get(0).getLocatorData().getPositionX();
-                float positionY = sensorDatas.get(0).getLocatorData().getPositionY();
-                handleLocationUpdate(positionX, positionY);
+                float velocityX = sensorDatas.get(0).getLocatorData().getVelocityX();
+                float velocityY = sensorDatas.get(0).getLocatorData().getVelocityY();
+                handleLocationUpdate(velocityX, velocityY);
             }
+
+            //EXPERIMENTAL TODO
+            connectedRobot.sendCommand(new GetOdometerCommand());
         }
     }
 
@@ -268,9 +288,10 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             connectedRobot = null;
         }
 
-        discoveryAgent.disconnectAll();
         setupHomeScreen();
         invalidateOptionsMenu();
+        //EXPERIMENTAL TODO
+        disconnectAllRobots();
     }
 
     public void shutdownSphero() {
@@ -286,6 +307,19 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         setupHomeScreen();
         invalidateOptionsMenu();
+        //EXPERIMENTAL TODO
+        disconnectAllRobots();
+    }
+
+    //EXPERIMENTAL TODO
+    public void disconnectAllRobots() {
+        ArrayList<Robot> allRobots = new ArrayList<>();
+        allRobots.addAll(discoveryAgent.getOnlineRobots());
+        allRobots.addAll(discoveryAgent.getConnectedRobots());
+        allRobots.addAll(discoveryAgent.getConnectingRobots());
+        for(Robot robot : allRobots) {
+            robot.disconnect();
+        }
     }
 
     public void turn(View view) {

@@ -2,30 +2,27 @@ package com.rhino.sacsphero.util;
 
 public class LocationHelper {
 
+    public static final int STREAMING_RATE_DIVISOR = 10;
+    private static final int BASE_STREAMING_RATE = 400;
+
     private boolean tracking;
     private double targetDistance;
     private double distanceMoved;
-    private double startX;
-    private double startY;
-    private double currentX;
-    private double currentY;
+    private double secondsPerUpdate;
 
     public LocationHelper() {
         this.tracking = false;
         this.targetDistance = 0;
         this.distanceMoved = 0;
-        this.startX = 0;
-        this.startY = 0;
+
+        this.secondsPerUpdate = (STREAMING_RATE_DIVISOR / BASE_STREAMING_RATE);
     }
 
-    public void updateLocation(double x, double y) {
-        this.currentX = x;
-        this.currentY = y;
-
+    public void updateLocation(double velocityX, double velocityY) {
         if(this.tracking) {
-            double deltaX = Math.abs(x - this.startX);
-            double deltaY = Math.abs(y - this.startY);
-            this.distanceMoved = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+            double totalVelocity = Math.sqrt(Math.pow(velocityX, 2) + Math.pow(velocityY, 2));
+            double deltaDistance = totalVelocity * secondsPerUpdate;
+            this.distanceMoved += deltaDistance;
         }
     }
 
@@ -33,9 +30,6 @@ public class LocationHelper {
         this.tracking = true;
         this.distanceMoved = 0;
         this.targetDistance = targetDistance;
-
-        this.startX = this.currentX;
-        this.startY = this.currentY;
     }
 
     public boolean shouldStop() {
