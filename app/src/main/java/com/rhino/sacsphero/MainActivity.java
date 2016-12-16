@@ -2,6 +2,8 @@ package com.rhino.sacsphero;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -36,6 +38,8 @@ import com.orbotix.common.internal.AsyncMessage;
 import com.orbotix.common.internal.DeviceResponse;
 import com.orbotix.common.sensor.DeviceSensorsData;
 import com.orbotix.common.sensor.SensorFlag;
+import com.rhino.sacsphero.fragment.MyAlertDialogFragment;
+import com.rhino.sacsphero.fragment.MyDialogFragment;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
@@ -43,7 +47,7 @@ import com.rhino.sacsphero.util.LocationHelper;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener, MyDialogFragment.UserNameListener {
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
@@ -218,6 +222,30 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
             //EXPERIMENTAL TODO
             connectedRobot.sendCommand(new GetOdometerCommand());
+        }
+    }
+
+    @Override
+    public void onFinishUserDialog(String user) {
+        Toast.makeText(this, "Hello, " + user, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onClick(View view) {
+        // close existing dialog fragments
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
+        switch (view.getId()) {
+            case R.id.tempButton:
+                MyDialogFragment editNameDialog = new MyDialogFragment();
+                editNameDialog.show(manager, "fragment_edit_name");
+                break;
+            case R.id.tempButton2:
+                MyAlertDialogFragment alertDialogFragment = new MyAlertDialogFragment();
+                alertDialogFragment.show(manager, "fragment_edit_name");
+                break;
         }
     }
 
