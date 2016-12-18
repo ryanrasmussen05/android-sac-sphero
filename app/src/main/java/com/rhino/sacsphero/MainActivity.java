@@ -389,7 +389,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void startLabyrinth(View view) {
-        hideKeyboard(view);
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
         inGame = true;
