@@ -22,25 +22,15 @@ import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
-import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.command.SetDataStreamingCommand;
 import com.orbotix.common.DiscoveryException;
-import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
-import com.orbotix.common.internal.AsyncMessage;
-import com.orbotix.common.internal.DeviceResponse;
-import com.orbotix.common.sensor.DeviceSensorsData;
-import com.orbotix.common.sensor.SensorFlag;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
-import com.rhino.sacsphero.util.LocationHelper;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener {
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
@@ -48,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
-    private LocationHelper locationHelper;
 
     private boolean inGame;
 
@@ -60,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_main);
 
         inGame = false;
-        locationHelper = new LocationHelper();
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
@@ -151,11 +139,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
-                connectedRobot.addResponseListener(this);
-
-                //rate is 400/10 per second, packet size is 1, enable locator data, 0 is unlimited streaming
-                connectedRobot.sendCommand(new SetDataStreamingCommand((int)LocationHelper.STREAMING_RATE_DIVISOR, 1, SensorFlag.VELOCITY.longValue(), 0));
-
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -180,27 +163,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             case Connected:
                 connectionDialog.setMessage("Connecting to: " + robot.getName());
                 Log.e(TAG, "CONNECTED");
-        }
-    }
-
-    @Override
-    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-    }
-
-    @Override
-    public void handleStringResponse(String s, Robot robot) {
-    }
-
-    @Override
-    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
-            ArrayList<DeviceSensorsData> sensorDatas = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData();
-
-            if (sensorDatas != null && sensorDatas.get(0) != null) {
-                float velocityX = sensorDatas.get(0).getLocatorData().getVelocityX();
-                float velocityY = sensorDatas.get(0).getLocatorData().getVelocityY();
-                handleLocationUpdate(velocityX, velocityY);
-            }
         }
     }
 
@@ -322,34 +284,25 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         if(connectedRobot == null)
             return;
 
-        int distance;
+        int timeInterval;
+        float speed;
 
-        //the actual distance is less to account for over-rolling
         switch(view.getId()) {
             case R.id.driveFiveButton:
-                distance = 2;
+                timeInterval = 0;
+                speed = 0.50f;
                 break;
             case R.id.driveTenButton:
-                distance = 5;
+                timeInterval = 25;
+                speed = 0.65f;
                 break;
             case R.id.driveTwentyButton:
             default:
-                distance = 15;
+                timeInterval = 100;
+                speed = 0.75f;
         }
 
-        locationHelper.startTracking(distance);
-        DriveHelper.Drive(connectedRobot);
-    }
-
-    public void handleLocationUpdate(float velocityX, float velocityY) {
-        locationHelper.updateLocation(velocityX, velocityY);
-
-        if(connectedRobot == null)
-            return;
-
-        if(locationHelper.shouldStop()) {
-            DriveHelper.Stop(connectedRobot);
-        }
+        DriveHelper.Drive(connectedRobot, timeInterval, speed);
     }
 
     public void handleDisconnect() {
