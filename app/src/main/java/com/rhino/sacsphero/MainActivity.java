@@ -24,14 +24,8 @@ import android.widget.Toast;
 
 import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
-import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.command.GetOdometerCommand;
-import com.orbotix.command.GetOdometerResponse;
-import com.orbotix.command.RotationRateCommand;
-import com.orbotix.command.SetDataStreamingCommand;
 import com.orbotix.common.DiscoveryException;
-import com.orbotix.common.ResponseListener;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.orbotix.common.internal.AsyncMessage;
@@ -43,8 +37,8 @@ import com.rhino.sacsphero.fragment.MyDialogFragment;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
-import com.rhino.sacsphero.util.LocationHelper;
 
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener, MyDialogFragment.UserNameListener {
@@ -55,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     private DiscoveryAgentClassic discoveryAgent;
     private ConvenienceRobot connectedRobot;
-    private LocationHelper locationHelper;
 
     private boolean inGame;
 
@@ -67,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         setContentView(R.layout.activity_main);
 
         inGame = false;
-        locationHelper = new LocationHelper();
         discoveryAgent = DiscoveryAgentClassic.getInstance();
         checkPermissions(REQUEST_CODE_LOCATION_PERMISSION);
     }
@@ -158,17 +150,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
                 connectedRobot.setLed(1f, 0f, 0f);
                 connectedRobot.setBackLedBrightness(1.0f);
-                connectedRobot.addResponseListener(this);
-
-                //EXPERIMENTAL TODO
-                //rate is 400/10 per second, packet size is 1, enable locator data, 0 is unlimited streaming
-                connectedRobot.sendCommand(new SetDataStreamingCommand(LocationHelper.STREAMING_RATE_DIVISOR, 1, SensorFlag.LOCATOR.longValue(), 0));
-                //connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
-
-                //EXPERIMENTAL TODO
-                //set rotation rate
-                //between 0 and 1
-                connectedRobot.sendCommand(new RotationRateCommand(0.5f));
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -193,35 +174,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             case Connected:
                 connectionDialog.setMessage("Connecting to: " + robot.getName());
                 Log.e(TAG, "CONNECTED");
-        }
-    }
-
-    @Override
-    public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-        //EXPERIMENTAL TODO
-        if(deviceResponse instanceof GetOdometerResponse) {
-            String message = "ODOMETER: " + String.valueOf(((GetOdometerResponse) deviceResponse).getDistanceInCentimeters());
-            Log.e(TAG, message);
-        }
-    }
-
-    @Override
-    public void handleStringResponse(String s, Robot robot) {
-    }
-
-    @Override
-    public void handleAsyncMessage(AsyncMessage asyncMessage, Robot robot) {
-        if (asyncMessage instanceof DeviceSensorAsyncMessage) {
-            ArrayList<DeviceSensorsData> sensorDatas = ((DeviceSensorAsyncMessage) asyncMessage).getAsyncData();
-
-            if (sensorDatas != null && sensorDatas.get(0) != null) {
-                float velocityX = sensorDatas.get(0).getLocatorData().getVelocityX();
-                float velocityY = sensorDatas.get(0).getLocatorData().getVelocityY();
-                handleLocationUpdate(velocityX, velocityY);
-            }
-
-            //EXPERIMENTAL TODO
-            connectedRobot.sendCommand(new GetOdometerCommand());
         }
     }
 
@@ -279,8 +231,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void start(View view) {
-        hideKeyboard(view);
-
         if(hasProperPermissions()) {
             startDiscovery();
         } else {
@@ -328,8 +278,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         invalidateOptionsMenu();
-        //EXPERIMENTAL TODO
-        disconnectAllRobots();
     }
 
     public void shutdownSphero() {
@@ -344,19 +292,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         invalidateOptionsMenu();
-        //EXPERIMENTAL TODO
-        disconnectAllRobots();
-    }
-
-    //EXPERIMENTAL TODO
-    public void disconnectAllRobots() {
-        ArrayList<Robot> allRobots = new ArrayList<>();
-        allRobots.addAll(discoveryAgent.getOnlineRobots());
-        allRobots.addAll(discoveryAgent.getConnectedRobots());
-        allRobots.addAll(discoveryAgent.getConnectingRobots());
-        for(Robot robot : allRobots) {
-            robot.disconnect();
-        }
     }
 
     public void turn(View view) {
@@ -384,33 +319,25 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         if(connectedRobot == null)
             return;
 
-        int distance;
+        int timeInterval;
+        float speed;
 
         switch(view.getId()) {
             case R.id.driveFiveButton:
-                distance = 5;
+                timeInterval = 0;
+                speed = 0.50f;
                 break;
             case R.id.driveTenButton:
-                distance = 10;
+                timeInterval = 25;
+                speed = 0.65f;
                 break;
             case R.id.driveTwentyButton:
             default:
-                distance = 20;
+                timeInterval = 100;
+                speed = 0.75f;
         }
 
-        locationHelper.startTracking(distance);
-        DriveHelper.Drive(connectedRobot);
-    }
-
-    public void handleLocationUpdate(float positionX, float positionY) {
-        locationHelper.updateLocation(positionX, positionY);
-
-        if(connectedRobot == null)
-            return;
-
-        if(locationHelper.shouldStop()) {
-            DriveHelper.Stop(connectedRobot);
-        }
+        DriveHelper.Drive(connectedRobot, timeInterval, speed);
     }
 
     public void handleDisconnect() {
@@ -419,7 +346,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void startLabyrinth(View view) {
-        hideKeyboard(view);
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
         inGame = true;
