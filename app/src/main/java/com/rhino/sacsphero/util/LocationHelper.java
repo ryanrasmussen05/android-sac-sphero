@@ -2,8 +2,8 @@ package com.rhino.sacsphero.util;
 
 public class LocationHelper {
 
-    public static final int STREAMING_RATE_DIVISOR = 10;
-    private static final int BASE_STREAMING_RATE = 400;
+    public static final double STREAMING_RATE_DIVISOR = 10;
+    private static final double BASE_STREAMING_RATE = 400;
 
     private boolean tracking;
     private double targetDistance;

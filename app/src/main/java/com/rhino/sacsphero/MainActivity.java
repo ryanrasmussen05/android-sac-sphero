@@ -24,9 +24,6 @@ import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
 import com.orbotix.async.DeviceSensorAsyncMessage;
 import com.orbotix.classic.DiscoveryAgentClassic;
-import com.orbotix.command.GetOdometerCommand;
-import com.orbotix.command.GetOdometerResponse;
-import com.orbotix.command.RotationRateCommand;
 import com.orbotix.command.SetDataStreamingCommand;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.ResponseListener;
@@ -156,15 +153,9 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 connectedRobot.setBackLedBrightness(1.0f);
                 connectedRobot.addResponseListener(this);
 
-                //EXPERIMENTAL TODO
                 //rate is 400/10 per second, packet size is 1, enable locator data, 0 is unlimited streaming
-                connectedRobot.sendCommand(new SetDataStreamingCommand(LocationHelper.STREAMING_RATE_DIVISOR, 1, SensorFlag.LOCATOR.longValue(), 0));
-                //connectedRobot.enableSensors(SensorFlag.LOCATOR.longValue(), SensorControl.StreamingRate.STREAMING_RATE10);
+                connectedRobot.sendCommand(new SetDataStreamingCommand((int)LocationHelper.STREAMING_RATE_DIVISOR, 1, SensorFlag.VELOCITY.longValue(), 0));
 
-                //EXPERIMENTAL TODO
-                //set rotation rate
-                //between 0 and 1
-                connectedRobot.sendCommand(new RotationRateCommand(0.5f));
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -194,11 +185,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     @Override
     public void handleResponse(DeviceResponse deviceResponse, Robot robot) {
-        //EXPERIMENTAL TODO
-        if(deviceResponse instanceof GetOdometerResponse) {
-            String message = "ODOMETER: " + String.valueOf(((GetOdometerResponse) deviceResponse).getDistanceInCentimeters());
-            Log.e(TAG, message);
-        }
     }
 
     @Override
@@ -215,9 +201,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 float velocityY = sensorDatas.get(0).getLocatorData().getVelocityY();
                 handleLocationUpdate(velocityX, velocityY);
             }
-
-            //EXPERIMENTAL TODO
-            connectedRobot.sendCommand(new GetOdometerCommand());
         }
     }
 
@@ -298,8 +281,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         invalidateOptionsMenu();
-        //EXPERIMENTAL TODO
-        disconnectAllRobots();
     }
 
     public void shutdownSphero() {
@@ -314,19 +295,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         invalidateOptionsMenu();
-        //EXPERIMENTAL TODO
-        disconnectAllRobots();
-    }
-
-    //EXPERIMENTAL TODO
-    public void disconnectAllRobots() {
-        ArrayList<Robot> allRobots = new ArrayList<>();
-        allRobots.addAll(discoveryAgent.getOnlineRobots());
-        allRobots.addAll(discoveryAgent.getConnectedRobots());
-        allRobots.addAll(discoveryAgent.getConnectingRobots());
-        for(Robot robot : allRobots) {
-            robot.disconnect();
-        }
     }
 
     public void turn(View view) {
@@ -356,24 +324,25 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         int distance;
 
+        //the actual distance is less to account for over-rolling
         switch(view.getId()) {
             case R.id.driveFiveButton:
-                distance = 5;
+                distance = 2;
                 break;
             case R.id.driveTenButton:
-                distance = 10;
+                distance = 5;
                 break;
             case R.id.driveTwentyButton:
             default:
-                distance = 20;
+                distance = 15;
         }
 
         locationHelper.startTracking(distance);
         DriveHelper.Drive(connectedRobot);
     }
 
-    public void handleLocationUpdate(float positionX, float positionY) {
-        locationHelper.updateLocation(positionX, positionY);
+    public void handleLocationUpdate(float velocityX, float velocityY) {
+        locationHelper.updateLocation(velocityX, velocityY);
 
         if(connectedRobot == null)
             return;
