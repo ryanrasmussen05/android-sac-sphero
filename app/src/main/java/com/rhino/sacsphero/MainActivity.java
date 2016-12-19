@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
@@ -28,20 +29,12 @@ import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
-import com.orbotix.common.internal.AsyncMessage;
-import com.orbotix.common.internal.DeviceResponse;
-import com.orbotix.common.sensor.DeviceSensorsData;
-import com.orbotix.common.sensor.SensorFlag;
-import com.rhino.sacsphero.fragment.MyAlertDialogFragment;
-import com.rhino.sacsphero.fragment.MyDialogFragment;
+import com.rhino.sacsphero.fragment.QuestionDialogFragment;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
 
-public class MainActivity extends AppCompatActivity implements RobotChangedStateListener {
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, ResponseListener, MyDialogFragment.UserNameListener {
+public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
@@ -178,10 +171,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     @Override
-    public void onFinishUserDialog(String user) {
-        Toast.makeText(this, "Hello, " + user, Toast.LENGTH_SHORT).show();
+    public void onQuestionResult(boolean correct, int pointValue) {
+        Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
     }
 
+    //TODO temp
     public void onClick(View view) {
         // close existing dialog fragments
         FragmentManager manager = getFragmentManager();
@@ -189,14 +183,12 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
         }
+
         switch (view.getId()) {
             case R.id.tempButton:
-                MyDialogFragment editNameDialog = new MyDialogFragment();
-                editNameDialog.show(manager, "fragment_edit_name");
-                break;
-            case R.id.tempButton2:
-                MyAlertDialogFragment alertDialogFragment = new MyAlertDialogFragment();
-                alertDialogFragment.show(manager, "fragment_edit_name");
+                QuestionDialogFragment dialog = new QuestionDialogFragment();
+                dialog.setCancelable(false);
+                dialog.show(manager, "fragment_edit_name");
                 break;
         }
     }
