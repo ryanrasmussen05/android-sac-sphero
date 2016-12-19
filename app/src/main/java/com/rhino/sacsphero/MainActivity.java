@@ -7,10 +7,10 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
@@ -30,9 +30,20 @@ import com.orbotix.common.DiscoveryException;
 import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.rhino.sacsphero.fragment.QuestionDialogFragment;
+import com.rhino.sacsphero.question.Question;
+import com.rhino.sacsphero.question.QuestionXmlHandler;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
@@ -44,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
+    private ArrayList<Question> questions;
 
     private ProgressDialog connectionDialog;
 
@@ -51,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        parseQuestionsXml();
 
         inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
@@ -173,6 +186,25 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     public void onQuestionResult(boolean correct, int pointValue) {
         Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
+    }
+
+    public void parseQuestionsXml() {
+        AssetManager assetManager = getAssets();
+        try {
+            InputStream inputStream = assetManager.open("questions.xml");
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+            SAXParser sp = spf.newSAXParser();
+            XMLReader xr = sp.getXMLReader();
+
+            QuestionXmlHandler questionXmlHandler = new QuestionXmlHandler();
+            xr.setContentHandler(questionXmlHandler);
+            InputSource inputSource = new InputSource(inputStream);
+            xr.parse(inputSource);
+            questions = questionXmlHandler.getQuestions();
+            Log.e(TAG, questions.toString());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //TODO temp

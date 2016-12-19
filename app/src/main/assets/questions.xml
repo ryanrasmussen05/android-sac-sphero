@@ -1,0 +1,2309 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<questions>
+    <question>
+        <points>3</points>
+        <text>What is the capital of Massachusetts?</text>
+        <answer correct="true">Boston</answer>
+        <answer>Lexington</answer>
+        <answer>Salem</answer>
+        <answer>Springfield</answer>
+    </question>
+    <question>
+        <points>3</points>
+        <text>What is another name for the North Star?</text>
+        <answer correct="true">Polaris</answer>
+        <answer>Alpha Centauri</answer>
+        <answer>Sirius</answer>
+        <answer>Sun</answer>
+    </question>
+    <question>
+        <points>5</points>
+        <text>5 of the U.S. Federal Holidays fall on what day of the week?</text>
+        <answer correct="true">Monday</answer>
+        <answer>Thursday</answer>
+        <answer>Saturday</answer>
+        <answer>Tuesday</answer>
+    </question>
+    <question>
+        <points>2</points>
+        <text>What is the largest animal in the world?</text>
+        <answer correct="true">Blue Whale</answer>
+        <answer>Elephant</answer>
+        <answer>Orca</answer>
+        <answer>Hippopotamus</answer>
+    </question>
+    <question>
+        <points>2</points>
+        <text>According to the U.S. Constitution, the President is part of what branch of the U.S. Government?</text>
+        <answer correct="true">Executive</answer>
+        <answer>Legislative</answer>
+        <answer>Judicial</answer>
+        <answer>Military</answer>
+    </question>
+    <question>
+        <points>3</points>
+        <text>How many of the words for 1 - 10 have 5 letters?</text>
+        <answer correct="true">3</answer>
+        <answer>1</answer>
+        <answer>2</answer>
+        <answer>4</answer>
+    </question>
+    <question>
+        <points>4</points>
+        <text>How many of the words for 1 - 10 have 5 letters?</text>
+        <answer correct="true">3</answer>
+        <answer>1</answer>
+        <answer>2</answer>
+        <answer>4</answer>
+    </question>
+    <question>
+        <points>4</points>
+        <text>In what U.S. State did the Battle of Gettysburg take place?</text>
+        <answer correct="true">Pennsylvania</answer>
+        <answer>Virginia</answer>
+        <answer>Georgia</answer>
+        <answer>South Carolina</answer>
+    </question>
+    <question>
+        <points>4</points>
+        <text>Daylight Savings Time incorporates what season in its' entirety?</text>
+        <answer correct="true">Summer</answer>
+        <answer>Spring</answer>
+        <answer>Fall</answer>
+        <answer>Winter</answer>
+    </question>
+    
+    
+    
+    
+    <question>
+        <points>3</points>
+        <answer correct="true">1000</answer>
+        <text>How many meters are in a kilometer?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Long</answer>
+        <text>What is the root word of the word "Longest"?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Rhode Island</answer>
+        <text>In terms of land area, what is the smallest U.S. State?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Zachery</answer>
+        <text>What is the first name of former U.S. President Taylor?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">6</answer>
+        <text>How many legs does a butterfly have?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">50</answer>
+        <text>What is the numeric value of the roman numeral "L"?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">9</answer>
+        <text>How many Justices serve on the U.S. Supreme Court?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Saturday</answer>
+        <text>If March 1st falls on a Wednesday, what day does April 1st fall on?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">South America</answer>
+        <text>The Strait of Magellan runs through the southern tip of what continent?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Drank</answer>
+        <text>What is the Simple Past Tense of the verb "drink"?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Nitrogen</answer>
+        <text>What element comprises the majority of the Earth's atmosphere?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">8 hours</answer>
+        <text>Jacob left his home for school at 7:45 a.m. and arrived back home at 3:45 p.m., how many hours was he gone?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Sheep</answer>
+        <text>The female of what animal is called a Ewe?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Switzerland</answer>
+        <text>Bern is the capital of what European country?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">-2.5</answer>
+        <text>What is the sum of 11.5 and negative 14?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Orange</answer>
+        <text>The 3 secondary colors are Green, Purple and what other color?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Xylophone</answer>
+        <text>Which of the following instruments is part of the Percussion family?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">3</answer>
+        <text>How many singular nouns are in the following sentence? "Jeff went to the park to see the flock of seagulls."?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Quill</answer>
+        <text>What word starting with the letter Q can mean both a spike on a porcupine and a bird feather used as a pen?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">7</answer>
+        <text>What whole number is closest to the square root of 50?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Hieroglyphics</answer>
+        <text>What is the name for the form of picture writing used by the ancient Egyptians?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Illinois</answer>
+        <text>In what U.S. State is the Lincoln Home National Historic Site located?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Spaceship</answer>
+        <text>What word is the subject of the following sentence "The spaceship landed in Jacob's back yard"?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">New York City</answer>
+        <text>The United Nations Headquarters are in what city?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">FALSE</answer>
+        <text>TIn a leap year, there are more days in Jan/Feb combined than in Nov/Dec combined</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">4 hours</answer>
+        <text>If a car is traveling 40 mph, How long does it take to drive 160 miles?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">3</answer>
+        <text>How many nouns are in the following sentence? "The rabbit ran to the cafeteria and ate a really big salad."</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Ounce</answer>
+        <text>What unit of measurement is abbreviated "oz"?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Sea Lion</answer>
+        <text>Which of the following is a mammal? </text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Antarctica</answer>
+        <text>Which Continent is the least populated?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">January 20th</answer>
+        <text>Since the late 1930's, what calendar date has been designated for the inauguration of the U.S. President?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Aeronautics</answer>
+        <text>In the initials of the federal agency N.A.S.A., what does the first A stand for?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Explorer One</answer>
+        <text>What was the name of the first satellite that the United States sent into space?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Pride</answer>
+        <text>A group of wolves is a "pack", what is a group of lions called?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">14 Nickels</answer>
+        <text>Kyle has $2.00 in change, all in dimes and nickels. If he has 13 dimes, how many nickels does he have?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">F</answer>
+        <text>When reciting the alphabet in order, the 4th consonant you'll say is what?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Atlantic</answer>
+        <text>France borders what ocean?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Missouri</answer>
+        <text>What state's nickname is "The Show Me State"?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">The Richter Scale</answer>
+        <text>What scale is used to measure Earthquake intensity?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">4</answer>
+        <text>How many Pecks are in a Bushel?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Portugal</answer>
+        <text>What country borders Spain to the west?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">33</answer>
+        <text>If Jacob always goes bowling 3 times per week, how many times does he bowl in 11 weeks?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Georgia</answer>
+        <text>What U.S. State was named after a King of England?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Africa</answer>
+        <text>Mt. Kilimanjaro is located on what continent?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Tanzania</answer>
+        <text>What country is Mt. Kilimanjaro in?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>The names of how many days of the week do NOT start with T or S?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Compass</answer>
+        <text>What word can mean both "An Instrument used to draw circles" and also "a device used for determining direction"?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Colonies</answer>
+        <text>Cows gather in herds, what do Ants gather in?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">2</answer>
+        <text>An Isosceles Triangle has how many equal sides?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Potato</answer>
+        <text>Russett and Yukon Gold are varieties of what vegetable?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Alliteration</answer>
+        <text>The sentence "Alana always ate anchovies" is an example of which figurative language?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Florida</answer>
+        <text>Alana went on a trip to the Everglades, what U.S. State did she visit?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Tokyo</answer>
+        <text>What city is the capital of Japan?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Wind</answer>
+        <text>By definition, an ANEMOMETER measures the speed of what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Andrew Johnson</answer>
+        <text>Who immediately followed Abraham Lincoln as U.S. President?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">9 Inches</answer>
+        <text>On a map, if 1 inch = 20 miles, then how many inches is 180 miles?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Ares</answer>
+        <text>Who was the Greek God of WAR?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Poseidon</answer>
+        <text>Who was the Greek God of the SEA?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">The Pacific Ocean</answer>
+        <text>The U.S. State of Hawaii is located in what ocean?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">London</answer>
+        <text>What is the capital of the United Kingdom?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">5</answer>
+        <text>A pentagon has how many sides?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">New York City</answer>
+        <text>What U.S. City is the home of the Metropolitan Museum of Art?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Polio</answer>
+        <text>In the 1950's, Dr. Jonas Salk developed a vaccine that would protect people from what disease?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Cleopatra</answer>
+        <text>What Egyptian queen was the wife of Roman general Marc Antony?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Thomas Jefferson</answer>
+        <text>Which U.S. President is featured on the face of the nickel?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Loudly</answer>
+        <text>What is the adverb in the following sentence? "My father snored loudly and it kept my mother awake"</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Asia</answer>
+        <text>A Giant Panda's natural habitat is on what continent?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Australia</answer>
+        <text>What is the only continent that is also a country?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Improper Fraction</answer>
+        <text>8/7 is known as what type of fraction? (prompt: proper, improper, or mixed number)</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">24</answer>
+        <text>If Jacob writes his age in Roman Numerals as XXIV, how old is he pretending to be?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">The Star Spangled Banner</answer>
+        <text>What is the title of the U.S. National Anthem?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">The Indian Ocean</answer>
+        <text>Which of the world's major oceans lies directly east of Africa?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">300</answer>
+        <text>What is 309 rounded to the nearest hundred?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">The Sahara</answer>
+        <text>In terms of area, what is the largest desert in Africa?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Thanksgiving</answer>
+        <text>What is the only national holiday that always falls on a Thursday?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>PODIUM has how many vowels?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">The Prime Meridian</answer>
+        <text>The equator intersects what other imaginary line at 0 Longitude and 0 Latitude?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Eli Whitney</answer>
+        <text>On March 14, 1794, who received a patent for the Cotton Gin?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many horns did the triceratops dinosaur have on it's head?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">September</answer>
+        <text>What month comes last alphabetically?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Venus</answer>
+        <text>What planet is the 2nd closest to our sun?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">North America</answer>
+        <text>The country of Mexico is on what continent?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">J</answer>
+        <text>Besides "I", what is the only other letter in the alphabet that you have to "dot" in it's lower case version?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">2.54</answer>
+        <text>One inch = how many centimeters?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Lion</answer>
+        <text>The great sphinx in Egypt has the head of a man and the body of what species of animal?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">1776</answer>
+        <text>The U.S. Declaration of Independence was written and signed in what year?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Silver</answer>
+        <text>What precious metal has the symbol AG on the Periodic Table of Elements?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">English</answer>
+        <text>What is the official language of Australia?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">64</answer>
+        <text>If Nathan has 8 pies, and cuts each pie into 8 pieces, how many pieces of pie does Nathan have?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Montana</answer>
+        <text>Helena is the capital of what U.S. State?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Germany</answer>
+        <text>Famous scientist Albert Einstein was born in what country?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">30</answer>
+        <text>How many seconds are in half a minute?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">South America</answer>
+        <text>The Earth's largest rainforest is located on what continent?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Earth</answer>
+        <text>What is the only planet in our solar system that man has walked upon?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Amelia Earhart</answer>
+        <text>Who was the first woman to make a solo flight in an airplane across the Atlantic Ocean?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">366</answer>
+        <text>How many days are in a leap year?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Zeus</answer>
+        <text>In greek mythology, the thunder bolt was the symbol of which god?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Maine</answer>
+        <text>What U.S. State is the only U.S. State with only one syllable?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">4</answer>
+        <text>What number is exactly 1/2 way between 1 and 7 on a number line?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">April</answer>
+        <text>Which month comes first alphabetically?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Benjamin Franklin</answer>
+        <text>What American scientist is credited with inventing bifocals?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Fire</answer>
+        <text>According to Greek myth, what did Prometheus steal from the gods and give to mankind?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">5</answer>
+        <text>What is the "RANGE" of the numbers 8,3,7,6?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Mode</answer>
+        <text>In the set 3, 4, 7, 3, 9, is number 3 the mean, median, or mode?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Lifetime</answer>
+        <text>A United States Supreme Court Justice is appointed to serve for how long?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Greek</answer>
+        <text>Alpha, Beta, Gamma, Delta are the first 4 letters in what alphabet?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">6</answer>
+        <text>How many faces are there on a cube?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Paris</answer>
+        <text>Completed in 1889, the Eiffel Tower stands in what city?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Asia</answer>
+        <text>Which of the 7 continents has the largest population?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Invertebrate</answer>
+        <text>What is the scientific term for an animal without a backbone?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">X</answer>
+        <text>What is the 24th letter of the U.S. alphabet?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">School</answer>
+        <text>Which term is used for a group of fish?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">21</answer>
+        <text>What is the sum of all whole numbers 1-6, including 1 and 6?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Grape</answer>
+        <text>A raisin is a dehydrated version of what fruit?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Beijing</answer>
+        <text>What city is the capital of China?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Pound</answer>
+        <text>What unit of measurement is abbreviated "lb"</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">April</answer>
+        <text>The 100th day of the year occurs in what calendar month?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Alexander Graham Bell</answer>
+        <text>Who invented the telephone?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">mL</answer>
+        <text>What is the symbol for milliliters?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">2</answer>
+        <text>Identify the smallest prime number</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Feline</answer>
+        <text>What is the 6 letter noun that refers to any member of the cat family, and begins with the letter "f"?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Wright Brothers</answer>
+        <text>Who invented the successful flying airplane?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Fahrenheit</answer>
+        <text>What temperature is used most often in the U.S. for weather?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Cheetah</answer>
+        <text>Which animal is the fastest land mammal?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Thermometer</answer>
+        <text>What instrument is used to measure temperature?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Denominator</answer>
+        <text>In a fraction, what name is given to the number in the bottom of the fraction?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Samuel Morse</answer>
+        <text>Who invented the telegraph?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Henry Ford</answer>
+        <text>Who invented the assembly line production?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Volcano</answer>
+        <text>What is the name of a cone-shaped mountain formed by lava?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Tornadoes</answer>
+        <text>What weather phenomenon causes more deaths in the U.S. annually than any other except lightning?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Theodore Roosevelt</answer>
+        <text>What U.S. President was recognized as a world authority on American game animals?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Fog</answer>
+        <text>A cloud at ground level is called what?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Printing Press</answer>
+        <text>What invention in about 1450 A.D. revolutionized communication and the world? (Gutenberg)</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Platypus</answer>
+        <text>What mammal lays eggs?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Mongooses</answer>
+        <text>What is the plural form of the word mongoose?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Tint</answer>
+        <text>What is the new color called when you make a hue light?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Temperature</answer>
+        <text>We use thermometers to figure out what?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Gels</answer>
+        <text>What best describes the color filters added to a stage light?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Dept.</answer>
+        <text>What is the proper abbreviation for the word �Department�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">The Sun</answer>
+        <text>In astronomy, what star is closest to the Earth?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Sol 3</answer>
+        <text>What is the official name for the Sun?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Wampanoags</answer>
+        <text>What is the name of the Indians who signed a peace treaty with the Pilgrims?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Stratosphere</answer>
+        <text>In what part of the Earth�s atmosphere would you find the ozone layer?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Skull</answer>
+        <text>What are the bones in your head called?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Baleen</answer>
+        <text>There are two types of whales. One type is �toothed.� What is the other type?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Their</answer>
+        <text>Which of the following words means �belonging to them�?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Anna Sewell</answer>
+        <text>Who is the author of �Black Beauty�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Baker</answer>
+        <text>Which of the following provides a good?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">The Two Towers</answer>
+        <text>Which of the following books is NOT part of the �Chronicles of Narnia� series by C.S. Lewis?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">The Oceans</answer>
+        <text>During the water cycle, most of the earth�s water evaporates from what large heated land mass?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Susan B. Anthony</answer>
+        <text>Who was a woman�s rights leader who was arrested for voting?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Igneous</answer>
+        <text>What type of rock has a name that comes from the Latin word for �fire�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">4</answer>
+        <text>How many vowels are in the word �beautify�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">United States</answer>
+        <text>In 1976, what country made the first soft landing on Mars?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">4</answer>
+        <text>How many instruments are in a string quartet?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Dollar</answer>
+        <text>What do we call the currency of Australia?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Sternum</answer>
+        <text>Which is not part of the muscular system?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">City</answer>
+        <text>Minneapolis is a what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Red</answer>
+        <text>What is the complementary color of green?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many syllables are in the word �enemy�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Bassoon</answer>
+        <text>Which of the following instruments is a member of the woodwind family?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Partial</answer>
+        <text>When only a portion of the moon crosses the Earth�s shadow, what kind of eclipse is this called?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Green Room</answer>
+        <text>Which of these would be found backstage at a theater?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Gov.</answer>
+        <text>What is the abbreviation in the following sentence �Gov. Jones signed the education bill�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Whale</answer>
+        <text>Which of the following words refers to a �marine mammal�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Hammer</answer>
+        <text>The norse god Thor often defeated giants with what kind of weapon?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Dom</answer>
+        <text>What is the suffix of the word �freedom�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">1900</answer>
+        <text>What is 25 times 76?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Miles</answer>
+        <text>Which units would you use to measure the distance from the earth to the moon?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">800s</answer>
+        <text>In the Dewey decimal system, where would you find books about poetry?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Liberia</answer>
+        <text>Monrovia is the capital of what African country?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Inches</answer>
+        <text>In what units would you measure a pencil?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Stretch</answer>
+        <text>What does the Latin affix �tend� mean as in �extend�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many nouns are in the following sentence? �The rabbit ran to the cafeteria and ate a big salad�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">0.5</answer>
+        <text>What is the decimal equivalent of 4/8?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Obtain</answer>
+        <text>Which of the following is a synonym for �earn�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Erosion</answer>
+        <text>The wearing away of land by wind or water is known as what?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Symphony</answer>
+        <text>Joseph Haydn is sometimes called the father of what type of music?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Slide</answer>
+        <text>Which of these is not a wedge?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Ho Chi Minh City</answer>
+        <text>What is the largest city in Vietnam?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Goods</answer>
+        <text>What do we call something that a company physically makes?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Angles</answer>
+        <text>Degrees are a measurement of what?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">19</answer>
+        <text>What is the numeric value of the Roman numeral �XIX�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Artic</answer>
+        <text>The Siberian Plain borders what ocean?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">LXXII</answer>
+        <text>In Roman numerals, what is LII plus XX</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">The Man In The Yellow Hat</answer>
+        <text>Who owns Curious George?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Boca</answer>
+        <text>What is the Spanish word for mouth?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">1973</answer>
+        <text>Skylab was launched in what year?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Classical</answer>
+        <text>Wolfgang Amadeus Mozart composed music during which period (What type)?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Stars</answer>
+        <text>What makes up a constellation?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Danke</answer>
+        <text>How do you say �thank you� in German?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Canada</answer>
+        <text>If you cross the northern border of the US, in what country are you?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Reservoir</answer>
+        <text>A man-made lake created for the purpose of storing water is called a what?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Richmond</answer>
+        <text>During the U.S. Civil War, what city in Virginia was capital of the Confederacy?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Frightened</answer>
+        <text>What does the French word �effraye� mean?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Full Moon</answer>
+        <text>What do we call the phase of the moon when it�s completely bright with no shadows on it?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Desert</answer>
+        <text>In what habitat would you find a meercat?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">100,000</answer>
+        <text>Ten to the fifth power is the same as what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Set</answer>
+        <text>What term do we use to refer to everything the audience sees on the stage?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Root</answer>
+        <text>What part of the plant is a carrot?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Warm Salt Water</answer>
+        <text>Requiring the growth of corral, atolls are found only in what kind of water?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Direct</answer>
+        <text>What kind of democracy did ancient Athens practice?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Titanium</answer>
+        <text>On the periodic table, what element is represented by the letters �Ti�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Heated</answer>
+        <text>Evaporation occurs when an object is?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Quince</answer>
+        <text>What is the Spanish word for 15?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Mechanical</answer>
+        <text>What kind of wave requires a medium to travel thru?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Volcanic</answer>
+        <text>Pumice is formed from what kind of rock?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Alter</answer>
+        <text>Which word is a synonym for �change�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Wrong</answer>
+        <text>What word is the opposite of the word �right�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Retreat</answer>
+        <text>What is the opposite of the word �advance�</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">5</answer>
+        <text>How many consonants are in the word �cinnamon�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Mad</answer>
+        <text>What does the word �enojado� in Spanish mean?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Xylem</answer>
+        <text>What kinds of tubes transfer nutrients from the roots to the leaves?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Orange</answer>
+        <text>Which of the following is NOT considered a cool color?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Wolfgang</answer>
+        <text>What is the first name of 18th century Austrian composer Mozart?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Caribou</answer>
+        <text>Which of the following artic animals does NOT use camoflauge?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Solfege Syllables</answer>
+        <text>Do,Re,Mi,Fa,So,La,Ti,Do are examples of what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Volcano</answer>
+        <text>Which kind of disaster are you likely to find in the Pacific Northwest?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Wind</answer>
+        <text>The trumpet,trombone and french horn are in which family of musical instruments?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Sacagawea</answer>
+        <text>Who served as a guide and interpreter for the Lewis and Clark expedition?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Stage Right</answer>
+        <text>Which of these terms describes the left of center stage as seen by the audience?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Charcoal</answer>
+        <text>What kind of art technique uses the end of a burned stick?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Warren</answer>
+        <text>What do we call a rabbit�s home?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Geological</answer>
+        <text>What kind of disaster is a volcano?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Reptile</answer>
+        <text>A python is a member of which family?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Mumbai</answer>
+        <text>What is the largest city in India?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Asia</answer>
+        <text>Near what continent would you find the Gulf of Oman?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Stegosaurus</answer>
+        <text>Which dinosaur has large bony plates on its back?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Asia</answer>
+        <text>Mount Everest is located on which continent?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Fable</answer>
+        <text>What is a story with animals that act like humans that teaches a moral or lesson called?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Aquatic</answer>
+        <text>Animals that have a gas bladder are often found in what environment?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">4</answer>
+        <text>How many state names begin with the letter W?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Simile</answer>
+        <text>�As sharp as a tack� is an example of what type of figure of speech?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Rings</answer>
+        <text>Saturn is most famous for which feature?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Ocean</answer>
+        <text>In what habitat would you find a shark?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">France</answer>
+        <text>The country of Mali gained independence from what European colonial power in 1960?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">End</answer>
+        <text>What is the root word of the word �unending�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Identity</answer>
+        <text>�7243+0=7243� is an example of which property of addition?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Eardrum</answer>
+        <text>What is the thin membrane inside the ear that helps you hear?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Kitchen</answer>
+        <text>What�s a 7 letter word that means �a place where a person cooks�?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Whole Step</answer>
+        <text>In the C major scale, C to D is an example of what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Onze</answer>
+        <text>What is the French word for �11�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">6</answer>
+        <text>�Proud Percival pranced precariously across the prickly prairie.� In that sentence, how many words are examples of alliteration?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Harare</answer>
+        <text>What is the largest city in Mozambique?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Delaware</answer>
+        <text>What river did George Washington cross during the Revolutionary War?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Stale</answer>
+        <text>What is the opposite of the word �fresh�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Fissure</answer>
+        <text>What is the name for a crack in a volcano from which lava escapes?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">3/4</answer>
+        <text>An amendment to the U.S. Constitution must be ratified by what fraction of the states? (in the fraction form)</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">7</answer>
+        <text>How many consonants are in the word �constitution�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">4</answer>
+        <text>How many syllables are in the word �amphibian�?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Forecast</answer>
+        <text>An attempt to predict the weather is known as what?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Illinois</answer>
+        <text>In what state is the Lincoln Home National Historic Site?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Somersault</answer>
+        <text>What gymnastics move would make you flip 360 backwards?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Doldrums</answer>
+        <text>What is the belt of low pressure along the equator called?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Coma</answer>
+        <text>What do you call the cloud of vapor that surrounds the solid body of a comet?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many vowels are in the word �heavenly�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Water</answer>
+        <text>What�s the best drink for your body?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Plants</answer>
+        <text>What does a botanist study?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Pre</answer>
+        <text>What is the prefix of the word �prepaid�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Yen</answer>
+        <text>What do we call the currency of Japan?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">New York City</answer>
+        <text>What U.S. city is home to the Metropolitan Museum of Art?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">John F. Kennedy</answer>
+        <text>Which President was assassinated on November 22,1963?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">1918</answer>
+        <text>When did World War I end?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Conservation</answer>
+        <text>Which term describes the preservation,protection,and management of natural ecosystems and resources?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">New York City</answer>
+        <text>What U.S. city has the Museum of Modern Art(MOMA)?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Bibliographies</answer>
+        <text>Under the Dewey Decimal System,which of the following topics would you find listed under numbers 000-099?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Allusion</answer>
+        <text>What do you call a brief reference to a person,place,thing,event,or idea in history or literature?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Water</answer>
+        <text>What is the quickest way to get seeds out of dormancy?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Iron Horses</answer>
+        <text>What was another nickname given to the trains along the Transcontinental Railroad?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Wetlands</answer>
+        <text>In what habitat would you find a heron?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Fingernails</answer>
+        <text>Horses� hooves are made up of the same substance as what part of your body?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Necessary</answer>
+        <text>What�s a 9 letter word that means �something that must be done�?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">4</answer>
+        <text>Galileo discovered how many moons of Jupiter?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Benjamin Franklin</answer>
+        <text>Who came up with the idea of Daylight Savings time,and was instrumental in charting the Gulf Stream?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">90</answer>
+        <text>Michelle is going on summer break.She has approximately 3 months until she needs to go back to school.About how many days is that?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Thermal Sphere</answer>
+        <text>Which is not a layer of the Earth�s atmosphere?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Enojado</answer>
+        <text>What is the Spanish word for �angry�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Diecenueve</answer>
+        <text>What is the Spanish word for �19�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">City</answer>
+        <text>What is Washington D.C.?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Femur</answer>
+        <text>What is the name of the largest bone in your body?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Sidekick</answer>
+        <text>Which archetype aids the hero in a play,but doesn�t start any action on his own?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Baton Rouge</answer>
+        <text>What city is the capital of Louisiana?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">14</answer>
+        <text>If a triangle has an area of 42 square inches and a base of 6 inches,what is its height?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Yom Kippur</answer>
+        <text>What Jewish holiday is the Day of Atonement?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Hot</answer>
+        <text>Which word is an antonym for �cold�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Ottawa</answer>
+        <text>What is the capital of Canada?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Cubism</answer>
+        <text>What is the style Pablo Picasso often used that uses straight geometrical shapes to create images?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Utah</answer>
+        <text>Great Salt Lake is located in what U.S. state?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Caracas</answer>
+        <text>What is the largest city in Venezuela?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Jackson Pollock</answer>
+        <text>What artist was famous for his �splattered paint� pieces?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Lake Itasca</answer>
+        <text>Which is not one of the Great Lakes?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Oil Painting</answer>
+        <text>The �Mona Lisa� is an example of what kind of art technique?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Jonathan Swift</answer>
+        <text>Who wrote �Gulliver�s Travels�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Shadow</answer>
+        <text>What do we call the region of darkness that appears when light is blocked?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Aphrodite</answer>
+        <text>In Greek mythology,which goddess was the goddess of love and beauty?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Black and White</answer>
+        <text>What two colors are most commonly used to create Op art designs?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Channel</answer>
+        <text>What do we call a body of water that connects two larger bodies of water?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Thorax</answer>
+        <text>What is the middle region of an insect called?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Pitch</answer>
+        <text>Which term is NOT used in hockey?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">6</answer>
+        <text>How many consonants are in the word �principal�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">1</answer>
+        <text>Under the Articles of Confederation�the precursor to the Constitution�each state got how many votes?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Ally</answer>
+        <text>What is a friend,especially in a time of war,called?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">88</answer>
+        <text>How many cups are in 5 and a half gallons?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Faraday</answer>
+        <text>Who discovered that electricity could be created by moving a magnet through a wire coil?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">1</answer>
+        <text>How many vowels are in the word �shy�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Sedimentary</answer>
+        <text>What type of rock is formed when layers of loose materials are compacted?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">California</answer>
+        <text>What state�s nickname is �The Golden State�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Declaration of Independence</answer>
+        <text>Which document was first signed by John Hancock?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">5</answer>
+        <text>How many consonants are in the word �pictures�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Axis</answer>
+        <text>The imaginary line running through the center of the earth is called what?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Anaerobic</answer>
+        <text>The bench press is an example of what kind of exercise?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Quince</answer>
+        <text>What is the Spanish word for �15�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Germany</answer>
+        <text>What country was divided into 4 different zones of occupation after World War II?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Ichabod Crane</answer>
+        <text>Who is the hero of the Legend of Sleepy Hollow?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Convection</answer>
+        <text>What do we call a transfer of heat through moving liquids or gases?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Balance</answer>
+        <text>Concentric circles(circles within circles) are an example of what element of art?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Ukraine</answer>
+        <text>Kiev is the capital of what European country?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">4</answer>
+        <text>A rectangle has how many sides?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Color</answer>
+        <text>What can be measured by hue,saturation, and brightness?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Cerrado</answer>
+        <text>What is the Spanish word for �closed�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Quotient</answer>
+        <text>What is the answer to a division problem called?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">The Atmosphere</answer>
+        <text>What helps stop harmful radiation from reaching Earth?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Bolivia</answer>
+        <text>La Paz is the capital of what South American city?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Warm Front</answer>
+        <text>What is defined as the leading edge of a mass of warm air?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Virginia</answer>
+        <text>What state�s nickname is �Old Dominian�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">John Adams</answer>
+        <text>Who was the second President of the United States?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">James</answer>
+        <text>What is the name of former U.S. president Garfield?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Columbus</answer>
+        <text>Which city is the capital of Ohio?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">1</answer>
+        <text>How many nouns are in the following sentence? �Slow but steady wins the race.�</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">13 Cents</answer>
+        <text>If you have two dimes and buy a piece of candy for 7 cents,how much money will you have left over?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Carnivorous</answer>
+        <text>What kind of diet does a shark have?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Republic</answer>
+        <text>Ancient Rome, before the rise of Julius Caesar,used to practice what form of government?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many vowels are in the word �sleepy�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">1 in 6</answer>
+        <text>What is the possibility of rolling a three on a single die?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Kinetic</answer>
+        <text>What kind of energy is associated with motion?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Shrink</answer>
+        <text>What word means become smaller?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Minerals</answer>
+        <text>What are the basic building blocks of rocks?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Abdomen</answer>
+        <text>Which region of an insect is composed of 11 sections?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Circle</answer>
+        <text>A sphere is a three dimensional what?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Gills</answer>
+        <text>What is the part of a fish that helps it to breathe underwater?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Tundra</answer>
+        <text>In what habitat would you find a stoat?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Glase</answer>
+        <text>What word means a glossy coating?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Scale</answer>
+        <text>What is used to measure weight?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">0.09</answer>
+        <text>What is 9 hundreths in decimal form?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">92</answer>
+        <text>How many days total in the summer months of June,July and August?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Largest Planet</answer>
+        <text>Jupiter is best known for what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Chord</answer>
+        <text>What can the combination of three or more musical notes be considered as?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">135</answer>
+        <text>The supplementary angle of a 45 degree angle has how many degrees?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">On Its Legs</answer>
+        <text>Where does a bee collect pollen?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Positive Space</answer>
+        <text>What do we call the space occupied by the objects in a painting?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Sudan</answer>
+        <text>What country borders Egypt to the south?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Savanna</answer>
+        <text>In what habitat would you find zebra,kudu and lions?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">They stay the same</answer>
+        <text>Over the year,what happens to the stars we call constellations?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Pacific</answer>
+        <text>California is in what time zone?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">E Flat</answer>
+        <text>What is another name for the musical note, D#?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">One</answer>
+        <text>What does �mono� mean?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">12</answer>
+        <text>How many faces does a dodecahedron have?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Storytelling</answer>
+        <text>What important Mali tradition helped us learn about that country�s history?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Minnesota</answer>
+        <text>In what state would you find the headwaters, the start, of the Mississippi River?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Value</answer>
+        <text>Which element of art describes the amount of darkness or lightness in a piece?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Waterloo</answer>
+        <text>Which Belgian location was the site of the battle which ended Napoleon�s rule of France?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Virtual Image</answer>
+        <text>What do we call an image created in a mirror?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Vulcan</answer>
+        <text>In Roman myths,what god split open Jupiter�s forehead so Minerva could be born?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Gandhi</answer>
+        <text>Who is officially honored in India as Father of the Nation?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Neptune</answer>
+        <text>What is the eighth planet from the sun?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Chicago</answer>
+        <text>What U.S. city is home to the Field Museum of Natural History?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Bushel</answer>
+        <text>What unit of measurement is abbreviated �bu.?�</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Isis</answer>
+        <text>Osiris is married to which Egyptian Goddess?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Current</answer>
+        <text>What is the flow of an electric charge called?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">France</answer>
+        <text>The country of Morocco gained independence from what European colonial power in 1956?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Japan</answer>
+        <text>Which country�s flag is commonly referred to as the �Rising Sun�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">3</answer>
+        <text>How many vowels are in the word �mystery�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">G Flat</answer>
+        <text>What is another name for the musical note, F#?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Spring</answer>
+        <text>Which season follows winter?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Herbivorous</answer>
+        <text>What kind of diet does a deer have?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">1</answer>
+        <text>How many pronouns are in the following sentence? �My dad,James and I all went out to the carnival on Bridge Street.�</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">New Hampshire</answer>
+        <text>Concord is the capital of what U.S. state?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Turkey</answer>
+        <text>Ankara is the capital of what European country?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Central</answer>
+        <text>Alabama is in what time zone?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Symbiotic</answer>
+        <text>Clownfish living in sea anemones are an example of what kind of relationship?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Liz</answer>
+        <text>Ana,Tim,Liz and Rob are in line for movie tickets.Liz is immediately behind Tim.Ana�s behind both Tim and Liz.Rob�s behind Ana.Who gets in second?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">South America</answer>
+        <text>On what continent would you find Lake Titicaca?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Drought</answer>
+        <text>What do you call an extended lack of rain in an area?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Mas</answer>
+        <text>What Spanish word is the opposite of �less�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Sweden</answer>
+        <text>What country borders Finland to the west?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Alaska</answer>
+        <text>Edward went on a trip to see Glacier Bay National Park.To what state did he go?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Pop Art</answer>
+        <text>Minimalism and what other art style were among some of the last of the Modern Art movements?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">North Dakota</answer>
+        <text>Bismarck is the capital of what U.S. state?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Mesopotamian</answer>
+        <text>Which culture invented the plow?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Linnaeus</answer>
+        <text>Which scientist developed the classification system for living things?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Mayas</answer>
+        <text>What ancient civilization lived in the jungles of Central America?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Rumpelstilstin</answer>
+        <text>What fairy tale character spun gold for first born child?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Homestead Act</answer>
+        <text>Which government act allowed a pioneer to receive a title to a piece of land after working the land for five years?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Molting</answer>
+        <text>What is the process of shedding feathers, fur or skin called?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">George W. Carter</answer>
+        <text>Which famous American thought of 100 different ways to use the peanut?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Tornado</answer>
+        <text>Which storm can sport wind gusts of over 300 miles per hour?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Acute</answer>
+        <text>If an angle measures 45 degrees,what kind of angle is it?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Piano</answer>
+        <text>The harpsichord is the classical ancestor of what musical instrument?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Tennessee</answer>
+        <text>What state�s nickname is �The Volunteer State�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">North America</answer>
+        <text>On what continent would you find the Aleutian Range?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Dr. Seuss</answer>
+        <text>Which author wrote �Green Eggs and Ham�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Parasitic</answer>
+        <text>What kind of relationship does fleas have with a cat?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Folk Dance</answer>
+        <text>What term best describes a European regional dance of the common people?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Oort Cloud</answer>
+        <text>Scientist believe that long- period comets (which orbit the sun every 200 years)come from which celestial area?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Triceratops</answer>
+        <text>Which dinosaur�s name means �three horned face�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">West Virginia</answer>
+        <text>What state�s nickname is the �mountain state�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Czech Republic</answer>
+        <text>Prague is the capital of what European country?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Fruit</answer>
+        <text>What type of food is papaya?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Hartford</answer>
+        <text>What is the capital of Connecticut?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Rupee</answer>
+        <text>What do we call the currency of India?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Biannual</answer>
+        <text>Something that occurs twice a year or once every two years is called what?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Brass</answer>
+        <text>The tuba is a part of which musical family?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Italian</answer>
+        <text>Which culture invented the thermometer?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Atlantic</answer>
+        <text>Spain borders which ocean?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Ounce</answer>
+        <text>What unit of measurement is abbreviated �oz.�?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Goldilocks</answer>
+        <text>Who broke Baby Bear�s chair and fell asleep in his bed?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">5</answer>
+        <text>How many U.S. States border the Pacific Ocean?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Green</answer>
+        <text>When you mix equal amounts of blue and yellow paint, what color do you get?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Fat</answer>
+        <text>What kind of nutritional substance is broken down by bile?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">7</answer>
+        <text>Amanda left for school at 8:15am and returned home the same day at 3:15am. How many hours was she gone?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Equestrians</answer>
+        <text>The Roman middle class was known as what?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">1000</answer>
+        <text>What does the prefix �kilo� mean?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Kentucky</answer>
+        <text>What state�s nickname is �The Bluegrass State�?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Franklin Roosevelt</answer>
+        <text>What U.S. president served the most terms?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">South America</answer>
+        <text>Where is the longest continental mountain chain?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">8 Minutes</answer>
+        <text>About how long does it take heat from the sun to reach Earth�s surface?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Miercoles</answer>
+        <text>What is the Spanish word for �Wednesday�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">String</answer>
+        <text>What instrument family would not be found in a marching band?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Egg</answer>
+        <text>What is the first life stage of a Butterfly?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Hot Air Balloon</answer>
+        <text>What is the earliest recorded successful form of manned flight?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Odin</answer>
+        <text>In norse mythology, who is the chief God and ruler of the Aesir?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">State</answer>
+        <text>What is TEXAS?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">150%</answer>
+        <text>What is 11/2 expressed as a percentage?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Atomic Number</answer>
+        <text>On the periodic table, what tells you how many protons are in the nucleus of an atom?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Atlantic</answer>
+        <text>Uruguay borders which ocean?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">Idiom</answer>
+        <text>the phrase �scratch the surface� is an example of what figure of speech?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Decomposer</answer>
+        <text>In the food chain, what would an earthworm be considered?</text>
+    </question>
+    <question>
+        <points>2</points>
+        <answer correct="true">Green</answer>
+        <text>There are 3 secondary colors, 2 of them are purple and orange. What is the third?</text>
+    </question>
+    <question>
+        <points>1</points>
+        <answer correct="true">Vision</answer>
+        <text>Four of the five senses are hearing, smell, taste, and touch. What is the fith sense?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Indiana</answer>
+        <text>What states nickname is �The hossier state?�</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">150</answer>
+        <text>The term �sesquintennial� refers to how many years?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">To help the poor</answer>
+        <text>What is the hero�s motivation in �Robin Hood�?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">21</answer>
+        <text>Including Y, how many consonants are in the modern English alphabet?</text>
+    </question>
+    <question>
+        <points>3</points>
+        <answer correct="true">Tri</answer>
+        <text>What is the prefix of the word �tricycle�?</text>
+    </question>
+    <question>
+        <points>5</points>
+        <answer correct="true">The Guggenheim</answer>
+        <text>New york plays host to the Museum of modern art, the metropolitan museum of Art and what other museum?</text>
+    </question>
+    <question>
+        <points>4</points>
+        <answer correct="true">Asia</answer>
+        <text>Near what continent would you find Yellow Sea?</text>
+    </question>
+</questions>
