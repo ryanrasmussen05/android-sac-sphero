@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,23 +30,17 @@ import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.rhino.sacsphero.fragment.QuestionDialogFragment;
 import com.rhino.sacsphero.question.Question;
-import com.rhino.sacsphero.question.QuestionXmlHandler;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-
-import java.io.InputStream;
 import java.util.ArrayList;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
     public static final String QUESTIONS_EXTRA = "SAC_SPHERO_QUESTIONS";
+    public static final String QUESTION_EXTRA = "SAC_SPHERO_QUESTION";
 
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
@@ -57,16 +50,21 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
-    private ArrayList<Question> questions;
+    private ArrayList<Question> allQuestions;
+    private ArrayList<Question> availableQuestions;
 
     private ProgressDialog connectionDialog;
+    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        questions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
+        allQuestions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
+        copyQuestions();
+
+        random = new Random();
 
         inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
@@ -191,6 +189,14 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
     }
 
+    public void copyQuestions() {
+        availableQuestions = new ArrayList<>();
+
+        for(Question question : allQuestions) {
+            availableQuestions.add(question);
+        }
+    }
+
     //TODO temp
     public void onClick(View view) {
         // close existing dialog fragments
@@ -202,7 +208,15 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         switch (view.getId()) {
             case R.id.tempButton:
+                int nextQuestionIndex = random.nextInt(availableQuestions.size());
+                Question nextQuestion = availableQuestions.get(nextQuestionIndex);
+                availableQuestions.remove(nextQuestionIndex);
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(QUESTION_EXTRA, nextQuestion);
+
                 QuestionDialogFragment dialog = new QuestionDialogFragment();
+                dialog.setArguments(bundle);
                 dialog.setCancelable(false);
                 dialog.show(manager, "fragment_edit_name");
                 break;

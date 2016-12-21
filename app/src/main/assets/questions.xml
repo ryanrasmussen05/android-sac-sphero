@@ -265,12 +265,6 @@
         <text>The United Nations Headquarters are in what city?</text>
     </question>
     <question>
-        <points>4</points>
-        <answer correct="true">False</answer>
-		<answer>True</answer>
-        <text>In a leap year, there are more days in Jan/Feb combined than in Nov/Dec combined</text>
-    </question>
-    <question>
         <points>2</points>
         <answer correct="true">4 hours</answer>
 		<answer>40 hours</answer>
