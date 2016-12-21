@@ -3401,209 +3401,201 @@
     <question>
         <points>5</points>
         <answer correct="true">Equestrians</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Senatorial</answer>
+        <answer>Census</answer>
+        <answer>Noble</answer>
         <text>The Roman middle class was known as what?</text>
     </question>
     <question>
         <points>3</points>
-        <answer correct="true">1000</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What does the prefix �kilo� mean?</text>
-    </question>
-    <question>
-        <points>3</points>
         <answer correct="true">Kentucky</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What state�s nickname is �The Bluegrass State�?</text>
+		<answer>Tennessee</answer>
+        <answer>West Virginia</answer>
+        <answer>Alabama</answer>
+        <text>What state's nickname is "The Bluegrass State"?</text>
     </question>
     <question>
         <points>4</points>
         <answer correct="true">Franklin Roosevelt</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>George Washington</answer>
+        <answer>Grover Cleveland</answer>
+        <answer>Thomas Jefferson</answer>
         <text>What U.S. president served the most terms?</text>
     </question>
     <question>
         <points>4</points>
         <answer correct="true">South America</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>North America</answer>
+        <answer>Asia</answer>
+        <answer>Africa</answer>
         <text>Where is the longest continental mountain chain?</text>
     </question>
     <question>
         <points>5</points>
         <answer correct="true">8 Minutes</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>About how long does it take heat from the sun to reach Earth�s surface?</text>
+		<answer>16 Seconds</answer>
+        <answer>2.5 Hours</answer>
+        <answer>7 Days</answer>
+        <text>About how long does it take heat from the sun to reach Earth's surface?</text>
     </question>
     <question>
         <points>2</points>
         <answer correct="true">Miercoles</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What is the Spanish word for �Wednesday�?</text>
+		<answer>Sabado</answer>
+        <answer>Domingo</answer>
+        <answer>Jueves</answer>
+        <text>What is the Spanish word for "Wednesday"?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">String</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Brass</answer>
+        <answer>Percusson</answer>
+        <answer>Woodwind</answer>
         <text>What instrument family would not be found in a marching band?</text>
     </question>
     <question>
         <points>2</points>
         <answer correct="true">Egg</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Larva</answer>
+        <answer>Pupa</answer>
+        <answer>Adult</answer>
         <text>What is the first life stage of a Butterfly?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Hot Air Balloon</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Glider</answer>
+        <answer>Airplane</answer>
+        <answer>Parachute</answer>
         <text>What is the earliest recorded successful form of manned flight?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Odin</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Thor</answer>
+        <answer>Loki</answer>
+        <answer>Zeus</answer>
         <text>In norse mythology, who is the chief God and ruler of the Aesir?</text>
     </question>
     <question>
         <points>1</points>
         <answer correct="true">State</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What is TEXAS?</text>
+		<answer>Country</answer>
+        <answer>Fictional Place</answer>
+        <answer>City</answer>
+        <text>What is Texas?</text>
     </question>
     <question>
         <points>2</points>
-        <answer correct="true">150%</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+        <answer correct="true">550%</answer>
+		<answer>112%</answer>
+        <answer>100%</answer>
+        <answer>950%</answer>
         <text>What is 11/2 expressed as a percentage?</text>
     </question>
     <question>
         <points>4</points>
         <answer correct="true">Atomic Number</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Atomic Mass</answer>
+        <answer>Chemical Symbol</answer>
+        <answer>Shell Electrons</answer>
         <text>On the periodic table, what tells you how many protons are in the nucleus of an atom?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Atlantic</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Pacific</answer>
+        <answer>Indian</answer>
+        <answer>Arctic</answer>
         <text>Uruguay borders which ocean?</text>
     </question>
     <question>
         <points>5</points>
         <answer correct="true">Idiom</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>the phrase �scratch the surface� is an example of what figure of speech?</text>
+		<answer>Simile</answer>
+        <answer>Metaphor</answer>
+        <answer>Fact</answer>
+        <text>The phrase "scratch the surface" is an example of what figure of speech?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Decomposer</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Predator</answer>
+        <answer>Parasite</answer>
+        <answer>Scavenger</answer>
         <text>In the food chain, what would an earthworm be considered?</text>
     </question>
     <question>
         <points>2</points>
         <answer correct="true">Green</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>Blue</answer>
+        <answer>Red</answer>
+        <answer>Yellow</answer>
         <text>There are 3 secondary colors, 2 of them are purple and orange. What is the third?</text>
     </question>
     <question>
         <points>1</points>
         <answer correct="true">Vision</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>Four of the five senses are hearing, smell, taste, and touch. What is the fith sense?</text>
+		<answer>The Force</answer>
+        <answer>Breathing</answer>
+        <answer>Pain</answer>
+        <text>Four of the five senses are hearing, smell, taste, and touch. What is the fifth sense?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Indiana</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What states nickname is �The hossier state?�</text>
+		<answer>Illinois</answer>
+        <answer>Ohio</answer>
+        <answer>Michigan</answer>
+        <text>What states nickname is "The Hoosier State?"</text>
     </question>
     <question>
         <points>5</points>
         <answer correct="true">150</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>The term �sesquintennial� refers to how many years?</text>
+		<answer>60</answer>
+        <answer>70</answer>
+        <answer>200</answer>
+        <text>The term "sesquicentennial" refers to how many years?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">To help the poor</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What is the hero�s motivation in �Robin Hood�?</text>
+		<answer>To become wealthy</answer>
+        <answer>To become King</answer>
+        <answer>To escape England</answer>
+        <text>What is the hero's motivation in "Robin Hood"?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">21</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
+		<answer>22</answer>
+        <answer>23</answer>
+        <answer>20</answer>
         <text>Including Y, how many consonants are in the modern English alphabet?</text>
     </question>
     <question>
         <points>3</points>
         <answer correct="true">Tri</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>What is the prefix of the word �tricycle�?</text>
+		<answer>Cycle</answer>
+        <answer>Trike</answer>
+        <answer>Trick</answer>
+        <text>What is the prefix of the word "tricycle"?</text>
     </question>
     <question>
         <points>5</points>
         <answer correct="true">The Guggenheim</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>New york plays host to the Museum of modern art, the metropolitan museum of Art and what other museum?</text>
+		<answer>The Smithsonian</answer>
+        <answer>The Durham</answer>
+        <answer>The Louvre</answer>
+        <text>New York plays host to the Museum of Modern Art, the Metropolitan Museum of Art and what other museum?</text>
     </question>
     <question>
         <points>4</points>
         <answer correct="true">Asia</answer>
-		<answer></answer>
-        <answer></answer>
-        <answer></answer>
-        <text>Near what continent would you find Yellow Sea?</text>
+		<answer>Africa</answer>
+        <answer>North America</answer>
+        <answer>South America</answer>
+        <text>Near what continent would you find the Yellow Sea?</text>
     </question>
 </questions>
