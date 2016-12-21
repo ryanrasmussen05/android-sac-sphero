@@ -47,6 +47,8 @@ import javax.xml.parsers.SAXParserFactory;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
+    public static final String QUESTIONS_EXTRA = "SAC_SPHERO_QUESTIONS";
+
     private static final String TAG = "SAC Sphero";
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
+    private ArrayList<Question> questions;
 
     private ProgressDialog connectionDialog;
 
@@ -62,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        questions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
 
         inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
