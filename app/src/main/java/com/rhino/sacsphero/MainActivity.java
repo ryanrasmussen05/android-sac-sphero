@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
-    private ArrayList<Question> questions;
 
     private ProgressDialog connectionDialog;
 
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        parseQuestionsXml();
 
         inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
@@ -186,25 +184,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     public void onQuestionResult(boolean correct, int pointValue) {
         Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
-    }
-
-    public void parseQuestionsXml() {
-        AssetManager assetManager = getAssets();
-        try {
-            InputStream inputStream = assetManager.open("questions.xml");
-            SAXParserFactory spf = SAXParserFactory.newInstance();
-            SAXParser sp = spf.newSAXParser();
-            XMLReader xr = sp.getXMLReader();
-
-            QuestionXmlHandler questionXmlHandler = new QuestionXmlHandler();
-            xr.setContentHandler(questionXmlHandler);
-            InputSource inputSource = new InputSource(inputStream);
-            xr.parse(inputSource);
-            questions = questionXmlHandler.getQuestions();
-            Log.e(TAG, questions.toString());
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //TODO temp
