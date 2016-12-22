@@ -358,8 +358,15 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     private void handleDisconnect() {
-        //TODO
         Log.e(TAG, "UNEXPECTED DISCONNECT");
+        Toast.makeText(this, "Lost connection to Sphero!", Toast.LENGTH_LONG).show();
+        disconnectSphero();
+
+        if(inGame) {
+            setupLabyrinthScreen();
+        } else {
+            setupHomeScreen();
+        }
     }
 
     private void setupHomeScreen() {
