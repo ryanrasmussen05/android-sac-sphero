@@ -30,12 +30,12 @@ import com.orbotix.common.Robot;
 import com.orbotix.common.RobotChangedStateListener;
 import com.rhino.sacsphero.fragment.QuestionDialogFragment;
 import com.rhino.sacsphero.question.Question;
+import com.rhino.sacsphero.question.QuestionManager;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
@@ -50,21 +50,17 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
-    private ArrayList<Question> allQuestions;
-    private ArrayList<Question> availableQuestions;
+    private QuestionManager questionManager;
 
     private ProgressDialog connectionDialog;
-    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        allQuestions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
-        copyQuestions();
-
-        random = new Random();
+        ArrayList<Question> allQuestions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
+        questionManager = new QuestionManager(allQuestions);
 
         inGame = false;
         discoveryAgent = DiscoveryAgentClassic.getInstance();
@@ -189,14 +185,6 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
     }
 
-    public void copyQuestions() {
-        availableQuestions = new ArrayList<>();
-
-        for(Question question : allQuestions) {
-            availableQuestions.add(question);
-        }
-    }
-
     //TODO temp
     public void onClick(View view) {
         // close existing dialog fragments
@@ -208,9 +196,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
         switch (view.getId()) {
             case R.id.tempButton:
-                int nextQuestionIndex = random.nextInt(availableQuestions.size());
-                Question nextQuestion = availableQuestions.get(nextQuestionIndex);
-                availableQuestions.remove(nextQuestionIndex);
+                Question nextQuestion = questionManager.getNextQuestion();
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(QUESTION_EXTRA, nextQuestion);

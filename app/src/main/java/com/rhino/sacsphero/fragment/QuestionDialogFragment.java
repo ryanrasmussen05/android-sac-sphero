@@ -12,6 +12,9 @@ import com.rhino.sacsphero.MainActivity;
 import com.rhino.sacsphero.R;
 import com.rhino.sacsphero.question.Question;
 
+import java.util.Collections;
+import java.util.Random;
+
 public class QuestionDialogFragment extends DialogFragment implements View.OnClickListener {
 
     private Question question;
@@ -24,9 +27,12 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         question = getArguments().getParcelable(MainActivity.QUESTION_EXTRA);
 
+        //randomize order of answers
+        long seed = System.nanoTime();
+        Collections.shuffle(question.getAnswers(), new Random(seed));
+
         View view = inflater.inflate(R.layout.fragment_question, container);
 
-        //TODO add randomization
         Button answerA = (Button) view.findViewById(R.id.answerA);
         Button answerB = (Button) view.findViewById(R.id.answerB);
         Button answerC = (Button) view.findViewById(R.id.answerC);

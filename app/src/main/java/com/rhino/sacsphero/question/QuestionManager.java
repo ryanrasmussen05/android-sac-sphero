@@ -9,11 +9,22 @@ import org.xml.sax.XMLReader;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 public class QuestionManager {
+
+    private ArrayList<Question> allQuestions;
+    private ArrayList<Question> availableQuestions;
+    private Random random;
+
+    public QuestionManager(ArrayList<Question> allQuestions) {
+        this.allQuestions = allQuestions;
+        random = new Random();
+        copyQuestions();
+    }
 
     public static ArrayList<Question> GetAllQuestions(Context context) {
         ArrayList<Question> questions = new ArrayList<>();
@@ -35,5 +46,25 @@ public class QuestionManager {
         }
 
         return questions;
+    }
+
+    public Question getNextQuestion() {
+        if(availableQuestions.size() == 0) {
+            copyQuestions();
+        }
+
+        int nextQuestionIndex = random.nextInt(availableQuestions.size());
+        Question nextQuestion = availableQuestions.get(nextQuestionIndex);
+        availableQuestions.remove(nextQuestionIndex);
+
+        return nextQuestion;
+    }
+
+    private void copyQuestions() {
+        availableQuestions = new ArrayList<>();
+
+        for(Question question : allQuestions) {
+            availableQuestions.add(question);
+        }
     }
 }
