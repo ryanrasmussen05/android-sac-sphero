@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorPrimary">#1384be</color>
+    <color name="colorPrimaryDark">#1170A1</color>
     <color name="colorAccent">#1acad0</color>
+
+    <color name="splashScreenBackground">#000000</color>
 
     <color name="buttonColor">@color/colorAccent</color>
     <color name="buttonActiveColor">#279599</color>

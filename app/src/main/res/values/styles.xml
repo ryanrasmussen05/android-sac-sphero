@@ -13,5 +13,4 @@
         <item name="android:background">@drawable/button_custom</item>
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
-
 </resources>
