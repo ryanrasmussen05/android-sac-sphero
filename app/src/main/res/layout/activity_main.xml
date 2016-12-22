@@ -22,7 +22,7 @@
             android:layout_weight="3"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/sphero_logo_description" />
+            android:contentDescription="@string/stock_image" />
     </LinearLayout>
 
     <Button

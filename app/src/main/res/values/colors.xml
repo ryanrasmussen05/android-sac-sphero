@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#1170A1</color>
     <color name="colorAccent">#1acad0</color>
 
-    <color name="splashScreenBackground">#000000</color>
+    <color name="splashScreenBackground">#FFFFFF</color>
 
     <color name="buttonColor">@color/colorAccent</color>
     <color name="buttonActiveColor">#279599</color>
