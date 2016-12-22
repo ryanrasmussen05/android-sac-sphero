@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="activity_horizontal_margin">64dp</dimen>
+
+    <dimen name="button_custom_text_size">42sp</dimen>
+    <dimen name="button_custom_inset">4dp</dimen>
+    <dimen name="button_custom_corner_radius">10dp</dimen>
+    <dimen name="button_custom_padding">20dp</dimen>
+</resources>
