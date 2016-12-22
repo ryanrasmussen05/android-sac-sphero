@@ -2,7 +2,6 @@ package com.rhino.sacsphero;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -36,6 +35,7 @@ import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements RobotChangedStateListener, QuestionDialogFragment.QuestionResultListener {
 
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     public static final String QUESTION_EXTRA = "SAC_SPHERO_QUESTION";
 
     private static final String TAG = "SAC Sphero";
+    private static final int QUESTION_FREQUENCY = 10;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
 
@@ -50,14 +51,20 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private ConvenienceRobot connectedRobot;
 
     private boolean inGame;
-    private QuestionManager questionManager;
+    private int incorrectAnswers;
+    private int correctAnswers;
+    private int totalPoints;
+    private Random random;
 
+    private QuestionManager questionManager;
     private ProgressDialog connectionDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        random = new Random();
 
         ArrayList<Question> allQuestions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
         questionManager = new QuestionManager(allQuestions);
@@ -182,31 +189,14 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
 
     @Override
     public void onQuestionResult(boolean correct, int pointValue) {
-        Toast.makeText(this, String.valueOf(correct) + " " + String.valueOf(pointValue), Toast.LENGTH_SHORT).show();
-    }
-
-    //TODO temp
-    public void onClick(View view) {
-        // close existing dialog fragments
-        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
+        if(correct) {
+            correctAnswers++;
+            totalPoints += pointValue;
+        } else {
+            incorrectAnswers++;
         }
 
-        switch (view.getId()) {
-            case R.id.tempButton:
-                Question nextQuestion = questionManager.getNextQuestion();
-
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(QUESTION_EXTRA, nextQuestion);
-
-                QuestionDialogFragment dialog = new QuestionDialogFragment();
-                dialog.setArguments(bundle);
-                dialog.setCancelable(false);
-                dialog.show(manager, "fragment_edit_name");
-                break;
-        }
+        updateScoreDisplay();
     }
 
     public void hideKeyboard(View view) {
@@ -318,6 +308,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             }
 
             DriveHelper.Turn(connectedRobot, heading);
+            randomQuestion();
         }
     }
 
@@ -346,25 +337,29 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         DriveHelper.Drive(connectedRobot, timeInterval, speed);
-    }
-
-    public void handleDisconnect() {
-        //TODO
-        Log.e(TAG, "UNEXPECTED DISCONNECT");
+        randomQuestion();
     }
 
     public void startLabyrinth(View view) {
+        inGame = true;
+        incorrectAnswers = 0;
+        correctAnswers = 0;
+        totalPoints = 0;
         setContentView(R.layout.activity_labyrinth);
         setupLabyrinthScreen();
-        inGame = true;
         invalidateOptionsMenu();
     }
 
-    public void exitLabyrinth() {
+    private void exitLabyrinth() {
         inGame = false;
         setContentView(R.layout.activity_main);
         setupHomeScreen();
         invalidateOptionsMenu();
+    }
+
+    private void handleDisconnect() {
+        //TODO
+        Log.e(TAG, "UNEXPECTED DISCONNECT");
     }
 
     private void setupHomeScreen() {
@@ -408,5 +403,35 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         EditText turnInput = (EditText) findViewById(R.id.turnInput);
         turnInput.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 360)});
         turnInput.setOnFocusChangeListener(new InputFocusChangeListener(this));
+
+        updateScoreDisplay();
+    }
+
+    private void updateScoreDisplay() {
+        ((TextView) findViewById(R.id.incorrectAnswers)).setText(String.valueOf(incorrectAnswers));
+        ((TextView) findViewById(R.id.correctAnswers)).setText(String.valueOf(correctAnswers));
+        ((TextView) findViewById(R.id.totalPoints)).setText(String.valueOf(totalPoints));
+    }
+
+    private void randomQuestion() {
+        int diceRoll = random.nextInt(QUESTION_FREQUENCY);
+
+        if(diceRoll == 0) {
+            showQuestion();
+        }
+    }
+
+    private void showQuestion() {
+        FragmentManager manager = getFragmentManager();
+
+        Question nextQuestion = questionManager.getNextQuestion();
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(QUESTION_EXTRA, nextQuestion);
+
+        QuestionDialogFragment dialog = new QuestionDialogFragment();
+        dialog.setArguments(bundle);
+        dialog.setCancelable(false);
+        dialog.show(manager, "fragment_edit_name");
     }
 }
