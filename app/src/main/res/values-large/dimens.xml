@@ -15,6 +15,7 @@
     <dimen name="text_view_points_text_size">75sp</dimen>
 
     <dimen name="labyrinth_section_label_text_size">50sp</dimen>
+    <dimen name="labyrinth_section_margin">30dp</dimen>
 
     <dimen name="total_points_label_text_size">50sp</dimen>
     <dimen name="answers_label_text_size">25sp</dimen>

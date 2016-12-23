@@ -19,13 +19,15 @@
             android:layout_height="wrap_content"
             android:text="@string/reconnect_sphero"
             android:onClick="start"
-            style="@style/PrimaryButton"/>
+            style="@style/PrimaryButton"
+            android:layout_marginTop="@dimen/labyrinth_section_margin" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="@dimen/labyrinth_section_margin">
 
             <TextView
                 android:text="@string/turn_section_label"
@@ -75,6 +77,14 @@
                     style="@style/ImageButton"/>
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/gradient_divider"
+            android:layout_marginTop="@dimen/labyrinth_section_margin"
+            android:layout_marginBottom="@dimen/labyrinth_section_margin">
+        </View>
 
         <LinearLayout
             android:orientation="vertical"
