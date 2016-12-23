@@ -41,34 +41,40 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center">
+                android:gravity="center"
+                android:weightSum="3">
 
-                <Button
-                    android:text="@string/turn_left_button_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:layout_width="@dimen/image_button_size"
+                    android:layout_height="@dimen/image_button_size"
+                    app:srcCompat="@drawable/left"
+                    android:scaleType="fitCenter"
                     android:id="@+id/turnLeftButton"
-                    android:onClick="turn"/>
+                    android:contentDescription="@string/stock_image"
+                    android:onClick="turn"
+                    style="@style/ImageButton"/>
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="2"
                     android:inputType="number"
                     android:longClickable="false"
-                    android:ems="10"
                     android:id="@+id/turnInput"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/turn_input_hint"
                     android:selectAllOnFocus="true"
                     style="@style/EditText"/>
 
-                <Button
-                    android:text="@string/turn_right_button_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:layout_width="@dimen/image_button_size"
+                    android:layout_height="@dimen/image_button_size"
+                    app:srcCompat="@drawable/right"
+                    android:scaleType="fitCenter"
                     android:id="@+id/turnRightButton"
-                    android:onClick="turn"/>
+                    android:contentDescription="@string/stock_image"
+                    android:onClick="turn"
+                    style="@style/ImageButton"/>
             </LinearLayout>
         </LinearLayout>
 

@@ -19,6 +19,10 @@
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
 
+    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/button_secondary_custom</item>
+    </style>
+
     <style name="EditText">
         <item name="android:background">@drawable/edit_text_custom</item>
         <item name="android:textSize">@dimen/edit_text_custom_text_size</item>
