@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.orbotix.ConvenienceRobot;
 import com.orbotix.Sphero;
 import com.orbotix.classic.DiscoveryAgentClassic;
 import com.orbotix.common.DiscoveryException;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
 
     private DiscoveryAgentClassic discoveryAgent;
-    private ConvenienceRobot connectedRobot;
+    private Sphero sphero;
 
     private boolean inGame;
     private int incorrectAnswers;
@@ -101,8 +100,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(!inGame) {
-            menu.findItem(R.id.disconnect_sphero).setVisible(connectedRobot != null);
-            menu.findItem(R.id.sleep_sphero).setVisible(connectedRobot != null);
+            menu.findItem(R.id.disconnect_sphero).setVisible(sphero != null);
+            menu.findItem(R.id.sleep_sphero).setVisible(sphero != null);
             menu.findItem(R.id.exit_game).setVisible(false);
         } else {
             menu.findItem(R.id.disconnect_sphero).setVisible(false);
@@ -155,11 +154,11 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         switch (type) {
             case Online:
                 Log.e(TAG, "ONLINE");
-                connectedRobot = new Sphero(robot);
+                sphero = new Sphero(robot);
                 discoveryAgent.stopDiscovery();
 
-                connectedRobot.setLed(1f, 0f, 0f);
-                connectedRobot.setBackLedBrightness(1.0f);
+                sphero.setLed(1f, 0f, 0f);
+                sphero.setBackLedBrightness(1.0f);
 
                 if(inGame) {
                     setupLabyrinthScreen();
@@ -177,13 +176,9 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 break;
 
             case Connecting:
-                connectionDialog.setMessage("Found: " + robot.getName());
+                connectionDialog.setMessage("Connecting to: " + robot.getName());
                 Log.e(TAG, "CONNECTING");
                 break;
-
-            case Connected:
-                connectionDialog.setMessage("Connecting to: " + robot.getName());
-                Log.e(TAG, "CONNECTED");
         }
     }
 
@@ -265,29 +260,31 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     public void disconnectSphero() {
+        discoveryAgent.removeRobotStateListener(this);
+        discoveryAgent.disconnectAll();
+
         if(discoveryAgent.isDiscovering()) {
             discoveryAgent.stopDiscovery();
         }
-        discoveryAgent.removeRobotStateListener(this);
 
-        if(connectedRobot != null) {
-            connectedRobot.disconnect();
-            connectedRobot = null;
-        }
+        sphero = null;
 
         invalidateOptionsMenu();
     }
 
     public void shutdownSphero() {
+        discoveryAgent.removeRobotStateListener(this);
+
         if(discoveryAgent.isDiscovering()) {
             discoveryAgent.stopDiscovery();
         }
-        discoveryAgent.removeRobotStateListener(this);
 
-        if(connectedRobot != null) {
-            connectedRobot.sleep();
-            connectedRobot = null;
+        for(Robot robot : discoveryAgent.getRobots()) {
+            Sphero temp = new Sphero(robot);
+            temp.sleep();
         }
+
+        sphero = null;
 
         invalidateOptionsMenu();
     }
@@ -295,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     public void turn(View view) {
         hideKeyboard(view);
 
-        if(connectedRobot == null)
+        if(sphero == null)
             return;
 
         String turnValue = ((EditText) findViewById(R.id.turnInput)).getText().toString();
@@ -307,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 heading = 360 - heading;
             }
 
-            DriveHelper.Turn(connectedRobot, heading);
+            DriveHelper.Turn(sphero, heading);
             randomQuestion();
         }
     }
@@ -315,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     public void drive(View view) {
         hideKeyboard(view);
 
-        if(connectedRobot == null)
+        if(sphero == null)
             return;
 
         int timeInterval;
@@ -336,7 +333,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 speed = 0.75f;
         }
 
-        DriveHelper.Drive(connectedRobot, timeInterval, speed);
+        DriveHelper.Drive(sphero, timeInterval, speed);
         randomQuestion();
     }
 
@@ -370,13 +367,13 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     private void setupHomeScreen() {
-        if(connectedRobot != null) {
+        if(sphero != null) {
             findViewById(R.id.connectButton).setVisibility(View.GONE);
             findViewById(R.id.startLabyrinthButton).setVisibility(View.VISIBLE);
 
             TextView statusMessage = (TextView) findViewById(R.id.statusMessage);
             statusMessage.setTextSize(20);
-            statusMessage.setText(getString(R.string.connect_message, connectedRobot.getRobot().getName()));
+            statusMessage.setText(getString(R.string.connect_message, sphero.getRobot().getName()));
         } else {
             findViewById(R.id.connectButton).setVisibility(View.VISIBLE);
             findViewById(R.id.startLabyrinthButton).setVisibility(View.GONE);
@@ -387,7 +384,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     }
 
     private void setupLabyrinthScreen() {
-        if(connectedRobot != null) {
+        if(sphero != null) {
             findViewById(R.id.reConnectButton).setVisibility(View.GONE);
 
             findViewById(R.id.driveFiveButton).setEnabled(true);
