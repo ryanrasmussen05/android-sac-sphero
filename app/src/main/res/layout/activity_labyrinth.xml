@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/reconnect_sphero"
         android:onClick="start"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        style="@style/Button"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -118,34 +119,41 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="bottom">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
+                android:text="TEST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/incorrectAnswers"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/IncorrectTextView" />
 
             <TextView
+                android:text="TEST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/totalPoints"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TotalPointsTextView"/>
 
             <TextView
+                android:text="TEST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/correctAnswers"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/CorrectTextView"/>
         </LinearLayout>
     </LinearLayout>
 

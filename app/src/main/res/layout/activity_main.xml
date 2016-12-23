@@ -33,6 +33,12 @@
         android:onClick="start"
         style="@style/Button" />
 
+    <TextView
+        android:id="@+id/statusMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
     <Button
         android:id="@+id/startLabyrinthButton"
         android:layout_width="wrap_content"
@@ -40,11 +46,5 @@
         android:text="@string/start_labyrinth_button_text"
         android:onClick="startLabyrinth"
         style="@style/Button" />
-
-    <TextView
-        android:id="@+id/statusMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
 
 </LinearLayout>

@@ -13,4 +13,19 @@
         <item name="android:background">@drawable/button_custom</item>
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
+
+    <style name="IncorrectTextView">
+        <item name="android:background">@drawable/text_view_incorrect</item>
+        <item name="android:textSize">@dimen/text_view_answers_text_size</item>
+    </style>
+
+    <style name="CorrectTextView">
+        <item name="android:background">@drawable/text_view_correct</item>
+        <item name="android:textSize">@dimen/text_view_answers_text_size</item>
+    </style>
+
+    <style name="TotalPointsTextView">
+        <item name="android:background">@drawable/text_view_points</item>
+        <item name="android:textSize">@dimen/text_view_points_text_size</item>
+    </style>
 </resources>
