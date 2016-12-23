@@ -7,6 +7,8 @@
     <dimen name="button_custom_corner_radius">5dp</dimen>
     <dimen name="button_custom_padding">15dp</dimen>
 
+    <dimen name="edit_text_custom_text_size">20sp</dimen>
+
     <dimen name="text_view_answers_text_size">20sp</dimen>
     <dimen name="text_view_points_text_size">30sp</dimen>
 

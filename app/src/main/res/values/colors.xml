@@ -12,6 +12,10 @@
     <color name="buttonSecondaryActiveColor">#0B4E71</color>
     <color name="buttonDisabledColor">#686868</color>
 
+    <color name="editTextFillColor">#00000000</color>
+    <color name="editTextBorderColor">@color/colorPrimary</color>
+    <color name="editTextFocusedBorderColor">@color/colorAccent</color>
+
     <color name="textViewFillColor">#00000000</color>
     <color name="textViewIncorrectBorderColor">#FF0000</color>
     <color name="textViewCorrectBorderColor">#00FF00</color>
