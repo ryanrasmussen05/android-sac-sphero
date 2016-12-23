@@ -19,23 +19,21 @@
             android:layout_height="wrap_content"
             android:text="@string/reconnect_sphero"
             android:onClick="start"
-            android:layout_marginTop="20dp"
             style="@style/PrimaryButton"/>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:gravity="center">
 
             <TextView
                 android:text="@string/turn_section_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="@dimen/labyrinth_section_label_text_size"
                 android:textAllCaps="true"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -82,14 +80,13 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:gravity="center">
 
             <TextView
                 android:text="@string/drive_section_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="@dimen/labyrinth_section_label_text_size"
                 android:textAllCaps="true"
                 android:textStyle="bold" />
 
