@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/connect_button_text"
         android:onClick="start"
-        style="@style/Button" />
+        style="@style/PrimaryButton" />
 
     <TextView
         android:id="@+id/statusMessage"
@@ -45,6 +45,6 @@
         android:layout_height="wrap_content"
         android:text="@string/start_labyrinth_button_text"
         android:onClick="startLabyrinth"
-        style="@style/Button" />
+        style="@style/PrimaryButton" />
 
 </LinearLayout>

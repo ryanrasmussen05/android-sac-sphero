@@ -6,8 +6,10 @@
 
     <color name="splashScreenBackground">#FFFFFF</color>
 
-    <color name="buttonColor">@color/colorAccent</color>
-    <color name="buttonActiveColor">#279599</color>
+    <color name="buttonPrimaryColor">@color/colorAccent</color>
+    <color name="buttonPrimaryActiveColor">#279599</color>
+    <color name="buttonSecondaryColor">@color/colorPrimary</color>
+    <color name="buttonSecondaryActiveColor">#0B4E71</color>
     <color name="buttonDisabledColor">#686868</color>
 
     <color name="textViewFillColor">#00000000</color>

@@ -9,8 +9,13 @@
         <item name="android:colorBackground">@color/splashScreenBackground</item>
     </style>
 
-    <style name="Button" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_custom</item>
+    <style name="PrimaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_primary_custom</item>
+        <item name="android:textSize">@dimen/button_custom_text_size</item>
+    </style>
+
+    <style name="SecondaryButton">
+        <item name="android:background">@drawable/button_secondary_custom</item>
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
 

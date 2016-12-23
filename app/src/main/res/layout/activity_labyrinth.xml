@@ -19,7 +19,7 @@
             android:text="@string/reconnect_sphero"
             android:onClick="start"
             android:layout_marginTop="20dp"
-            style="@style/Button"/>
+            style="@style/PrimaryButton"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -98,7 +98,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/driveFiveButton"
                     android:onClick="drive"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    style="@style/SecondaryButton"/>
 
                 <Button
                     android:text="@string/drive_ten_centimeters"
@@ -106,7 +107,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/driveTenButton"
                     android:onClick="drive"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    style="@style/SecondaryButton"/>
 
                 <Button
                     android:text="@string/drive_twenty_centimeters"
@@ -114,7 +116,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/driveTwentyButton"
                     android:onClick="drive"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    style="@style/SecondaryButton"/>
 
             </LinearLayout>
 
@@ -127,6 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:baselineAligned="false"
         android:gravity="center">
 
         <LinearLayout
