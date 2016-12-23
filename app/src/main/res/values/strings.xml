@@ -17,4 +17,7 @@
     <string name="drive_twenty_centimeters">20 cm</string>
     <string name="number_of_moves">Number of moves:</string>
     <string name="stock_image">stock image</string>
+    <string name="incorrect">incorrect</string>
+    <string name="correct">correct</string>
+    <string name="points">points</string>
 </resources>

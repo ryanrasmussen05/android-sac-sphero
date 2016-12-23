@@ -1,160 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:keepScreenOn="true"
-    android:gravity="center_horizontal"
-    android:clickable="true"
-    android:focusableInTouchMode="true">
-
-    <Button
-        android:id="@+id/reConnectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reconnect_sphero"
-        android:onClick="start"
-        android:layout_marginTop="20dp"
-        style="@style/Button"/>
+    android:keepScreenOn="true">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/turn_section_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <Button
-                android:text="@string/turn_left_button_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/turnLeftButton"
-                android:layout_weight="1"
-                android:onClick="turn"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:longClickable="false"
-                android:ems="10"
-                android:id="@+id/turnInput"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:hint="@string/turn_input_hint"
-                android:selectAllOnFocus="true"/>
-
-            <Button
-                android:text="@string/turn_right_button_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/turnRightButton"
-                android:layout_weight="1"
-                android:onClick="turn"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/drive_section_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:text="@string/drive_five_centimeters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/driveFiveButton"
-                android:onClick="drive"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="@string/drive_ten_centimeters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/driveTenButton"
-                android:onClick="drive"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="@string/drive_twenty_centimeters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/driveTwentyButton"
-                android:onClick="drive"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:focusableInTouchMode="true">
+
+        <Button
+            android:id="@+id/reConnectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reconnect_sphero"
+            android:onClick="start"
+            android:layout_marginTop="20dp"
+            style="@style/Button"/>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="20dp">
 
             <TextView
-                android:text="TEST"
+                android:text="@string/turn_section_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/incorrectAnswers"
-                android:layout_weight="1"
-                android:gravity="center"
-                style="@style/IncorrectTextView" />
+                android:textSize="24sp"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
-            <TextView
-                android:text="TEST"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/totalPoints"
-                android:layout_weight="1"
-                android:gravity="center"
-                style="@style/TotalPointsTextView"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-            <TextView
-                android:text="TEST"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/correctAnswers"
-                android:layout_weight="1"
-                android:gravity="center"
-                style="@style/CorrectTextView"/>
+                <Button
+                    android:text="@string/turn_left_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/turnLeftButton"
+                    android:layout_weight="1"
+                    android:onClick="turn"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:longClickable="false"
+                    android:ems="10"
+                    android:id="@+id/turnInput"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="@string/turn_input_hint"
+                    android:selectAllOnFocus="true"/>
+
+                <Button
+                    android:text="@string/turn_right_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/turnRightButton"
+                    android:layout_weight="1"
+                    android:onClick="turn"/>
+            </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:text="@string/drive_section_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:text="@string/drive_five_centimeters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/driveFiveButton"
+                    android:onClick="drive"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/drive_ten_centimeters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/driveTenButton"
+                    android:onClick="drive"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="@string/drive_twenty_centimeters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/driveTwentyButton"
+                    android:onClick="drive"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="@string/incorrect"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/answers_label_text_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/incorrectAnswers"
+                android:gravity="center"
+                style="@style/IncorrectTextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="@string/points"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/total_points_label_text_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalPoints"
+                android:gravity="center"
+                style="@style/TotalPointsTextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="@string/correct"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/answers_label_text_size"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/correctAnswers"
+                android:gravity="center"
+                style="@style/CorrectTextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
