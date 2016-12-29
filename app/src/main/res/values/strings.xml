@@ -20,4 +20,5 @@
     <string name="incorrect">incorrect</string>
     <string name="correct">correct</string>
     <string name="points">points</string>
+    <string name="continue_labyrinth">continue</string>
 </resources>

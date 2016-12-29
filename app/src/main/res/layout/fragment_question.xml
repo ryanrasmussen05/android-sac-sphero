@@ -105,4 +105,11 @@
 
     </TableLayout>
 
+    <Button
+        android:text="@string/continue_labyrinth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/continueLabyrinthButton"
+        style="@style/PrimaryButton" />
+
 </LinearLayout>
