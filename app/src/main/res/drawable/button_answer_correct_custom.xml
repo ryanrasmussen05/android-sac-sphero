@@ -7,13 +7,13 @@
     android:insetBottom="@dimen/standard_inset">
     <shape android:shape="rectangle">
         <corners android:radius="@dimen/standard_corner_radius" />
-        <solid android:color="@color/buttonQuestionColor" />
+        <solid android:color="@color/buttonAnswerColor" />
         <stroke
             android:width="1dp"
-            android:color="@color/textViewCorrectAnswerBorderColor" />
-        <padding android:left="@dimen/button_custom_padding"
-            android:top="@dimen/button_custom_padding"
-            android:right="@dimen/button_custom_padding"
-            android:bottom="@dimen/button_custom_padding" />
+            android:color="@color/green" />
+        <padding android:left="@dimen/button_answer_custom_padding"
+            android:top="@dimen/button_answer_custom_padding"
+            android:right="@dimen/button_answer_custom_padding"
+            android:bottom="@dimen/button_answer_custom_padding" />
     </shape>
 </inset>

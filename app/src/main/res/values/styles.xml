@@ -19,9 +19,9 @@
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
 
-    <style name="QuestionButton">
-        <item name="android:background">@drawable/button_question_custom</item>
-        <item name="android:textSize">@dimen/button_question_custom_text_size</item>
+    <style name="AnswerButton">
+        <item name="android:background">@drawable/button_answer_custom</item>
+        <item name="android:textSize">@dimen/button_answer_custom_text_size</item>
     </style>
 
     <style name="QuestionTextView">

@@ -12,7 +12,6 @@
         android:padding="@dimen/standard_inset">
 
         <TextView
-            android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_view_point_value_text_size"
@@ -26,7 +25,7 @@
             android:gravity="end"
             android:textSize="@dimen/text_view_point_value_text_size"
             android:textAllCaps="true"
-            android:textColor="@color/textViewCorrectAnswerBorderColor"
+            android:textColor="@color/green"
             android:id="@+id/correctDisplay"
             android:layout_weight="1" />
 
@@ -37,13 +36,12 @@
             android:gravity="end"
             android:textSize="@dimen/text_view_point_value_text_size"
             android:textAllCaps="true"
-            android:textColor="@color/textViewIncorrectAnswerBorderColor"
+            android:textColor="@color/red"
             android:id="@+id/incorrectDisplay"
             android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
-        android:text="This is where the question will go, it might be fairly long long long...?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -60,22 +58,20 @@
             android:layout_height="match_parent">
 
             <Button
-                android:text="Answer A si longer than the others"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/answerA"
                 android:textAllCaps="false"
-                style="@style/QuestionButton"/>
+                style="@style/AnswerButton"/>
 
             <Button
-                android:text="Answer B"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/answerB"
                 android:textAllCaps="false"
-                style="@style/QuestionButton" />
+                style="@style/AnswerButton" />
 
         </TableRow>
 
@@ -84,22 +80,20 @@
             android:layout_height="match_parent" >
 
             <Button
-                android:text="Answer C"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/answerC"
                 android:textAllCaps="false"
-                style="@style/QuestionButton"/>
+                style="@style/AnswerButton"/>
 
             <Button
-                android:text="Answer D is also pretty long"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:id="@+id/answerD"
                 android:textAllCaps="false"
-                style="@style/QuestionButton"/>
+                style="@style/AnswerButton"/>
 
         </TableRow>
 

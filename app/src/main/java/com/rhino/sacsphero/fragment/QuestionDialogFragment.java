@@ -13,13 +13,9 @@ import com.rhino.sacsphero.MainActivity;
 import com.rhino.sacsphero.R;
 import com.rhino.sacsphero.question.Question;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class QuestionDialogFragment extends DialogFragment implements View.OnClickListener {
 
@@ -98,11 +94,11 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
 
         if(isCorrect) {
             correctNotification.setVisibility(View.VISIBLE);
-            view.setBackgroundResource(R.drawable.button_question_correct_custom);
+            view.setBackgroundResource(R.drawable.button_answer_correct_custom);
             ((Button) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         } else {
             incorrectNotification.setVisibility(View.VISIBLE);
-            view.setBackgroundResource(R.drawable.button_question_incorrect_custom);
+            view.setBackgroundResource(R.drawable.button_answer_incorrect_custom);
             ((Button) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
             highlightCorrectAnswer();
         }
@@ -132,7 +128,7 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
             boolean isCorrect = answer.equals(question.getCorrectAnswer());
 
             if(isCorrect) {
-                button.setBackgroundResource(R.drawable.button_question_correct_custom);
+                button.setBackgroundResource(R.drawable.button_answer_correct_custom);
                 button.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 break;
             }

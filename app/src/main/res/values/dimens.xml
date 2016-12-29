@@ -10,7 +10,8 @@
     <dimen name="button_custom_padding">15dp</dimen>
 
     <!--Answer Button-->
-    <dimen name="button_question_custom_text_size">14sp</dimen>
+    <dimen name="button_answer_custom_text_size">14sp</dimen>
+    <dimen name="button_answer_custom_padding">20dp</dimen>
 
     <!--Image Button-->
     <dimen name="image_button_size">60dp</dimen>

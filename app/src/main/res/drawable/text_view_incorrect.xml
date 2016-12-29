@@ -13,7 +13,7 @@
             android:color="@color/textViewFillColor" />
         <stroke
             android:width="3dp"
-            android:color="@color/textViewIncorrectBorderColor" />
+            android:color="@color/red" />
         <padding
             android:left="@dimen/button_custom_padding"
             android:top="@dimen/button_custom_padding"
