@@ -41,7 +41,9 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
         TextView pointValueText = (TextView) view.findViewById(R.id.pointValue);
 
         questionText.setText(question.getText());
-        pointValueText.setText(String.valueOf(question.getPointValue()));
+        String pointsLabel = question.getPointValue() > 1 ? "Points" : "Point";
+        String pointsText = String.valueOf(question.getPointValue()) + " " + pointsLabel;
+        pointValueText.setText(pointsText);
 
         answerA.setOnClickListener(this);
         answerA.setText(question.getAnswers().get(0));

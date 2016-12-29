@@ -3,6 +3,7 @@
     <color name="colorPrimary">#1384be</color>
     <color name="colorPrimaryDark">#1170A1</color>
     <color name="colorAccent">#1acad0</color>
+    <color name="white">#ffffff</color>
 
     <color name="splashScreenBackground">#FFFFFF</color>
 
@@ -10,6 +11,8 @@
     <color name="buttonPrimaryActiveColor">#279599</color>
     <color name="buttonSecondaryColor">@color/colorPrimary</color>
     <color name="buttonSecondaryActiveColor">#0B4E71</color>
+    <color name="buttonQuestionColor">#282828</color>
+    <color name="buttonQuestionActiveColor">#1A1A1A</color>
     <color name="buttonDisabledColor">#686868</color>
 
     <color name="editTextFillColor">#00000000</color>
@@ -20,4 +23,8 @@
     <color name="textViewIncorrectBorderColor">#FF0000</color>
     <color name="textViewCorrectBorderColor">#00FF00</color>
     <color name="textViewPointsBorderColor">#FFFFFF</color>
+    <color name="textViewQuestionBorderColor">#FFFFFF</color>
+    <color name="textViewAnswerBorderColor">#686868</color>
+    <color name="textViewCorrectAnswerBorderColor">#00FF00</color>
+    <color name="textViewIncorrectAnswerBorderColor">#FF0000</color>
 </resources>

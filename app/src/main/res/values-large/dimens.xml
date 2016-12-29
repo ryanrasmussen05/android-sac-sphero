@@ -1,22 +1,36 @@
 <resources>
+    <!--App Wide Dimensions-->
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="activity_vertical_margin">64dp</dimen>
+    <dimen name="standard_inset">4dp</dimen>
+    <dimen name="standard_corner_radius">10dp</dimen>
 
+    <!--Custom Button-->
     <dimen name="button_custom_text_size">34sp</dimen>
-    <dimen name="button_custom_inset">4dp</dimen>
-    <dimen name="button_custom_corner_radius">10dp</dimen>
     <dimen name="button_custom_padding">20dp</dimen>
 
+    <!--Answer Button-->
+    <dimen name="button_question_custom_text_size">25sp</dimen>
+
+    <!--Image Button-->
     <dimen name="image_button_size">80dp</dimen>
 
+    <!--Custom Edit Text-->
     <dimen name="edit_text_custom_text_size">50sp</dimen>
 
+    <!--Score Display-->
     <dimen name="text_view_answers_text_size">50sp</dimen>
     <dimen name="text_view_points_text_size">75sp</dimen>
+    <dimen name="total_points_label_text_size">50sp</dimen>
+    <dimen name="answers_label_text_size">25sp</dimen>
 
+    <!--Question Dialog-->
+    <dimen name="text_view_question_text_size">50sp</dimen>
+    <dimen name="text_view_question_padding">50dp</dimen>
+    <dimen name="text_view_point_value_text_size">30sp</dimen>
+
+    <!--Labyrinth Activity-->
     <dimen name="labyrinth_section_label_text_size">50sp</dimen>
     <dimen name="labyrinth_section_margin">30dp</dimen>
 
-    <dimen name="total_points_label_text_size">50sp</dimen>
-    <dimen name="answers_label_text_size">25sp</dimen>
 </resources>

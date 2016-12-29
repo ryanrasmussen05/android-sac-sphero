@@ -2,13 +2,13 @@
 
 <inset
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="@dimen/button_custom_inset"
-    android:insetTop="@dimen/button_custom_inset"
-    android:insetRight="@dimen/button_custom_inset"
-    android:insetBottom="@dimen/button_custom_inset">
+    android:insetLeft="@dimen/standard_inset"
+    android:insetTop="@dimen/standard_inset"
+    android:insetRight="@dimen/standard_inset"
+    android:insetBottom="@dimen/standard_inset">
     <shape android:shape="rectangle">
         <corners
-            android:radius="@dimen/button_custom_corner_radius" />
+            android:radius="@dimen/standard_corner_radius" />
         <solid
             android:color="@color/textViewFillColor" />
         <stroke

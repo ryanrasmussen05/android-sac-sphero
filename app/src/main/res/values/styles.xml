@@ -19,6 +19,17 @@
         <item name="android:textSize">@dimen/button_custom_text_size</item>
     </style>
 
+    <style name="QuestionButton">
+        <item name="android:background">@drawable/button_question_custom</item>
+        <item name="android:textSize">@dimen/button_question_custom_text_size</item>
+    </style>
+
+    <style name="QuestionTextView">
+        <item name="android:background">@drawable/text_view_question</item>
+        <item name="android:textSize">@dimen/text_view_question_text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/button_secondary_custom</item>
     </style>
