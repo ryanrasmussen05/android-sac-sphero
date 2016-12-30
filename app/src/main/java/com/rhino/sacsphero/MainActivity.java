@@ -6,9 +6,13 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
@@ -33,6 +37,7 @@ import com.rhino.sacsphero.question.QuestionManager;
 import com.rhino.sacsphero.util.DriveHelper;
 import com.rhino.sacsphero.util.InputFilterMinMax;
 import com.rhino.sacsphero.util.InputFocusChangeListener;
+import com.thebluealliance.spectrum.SpectrumDialog;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     private int incorrectAnswers;
     private int correctAnswers;
     private int totalPoints;
+    private int selectedColor;
     private Random random;
 
     private QuestionManager questionManager;
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         actionBar.setDisplayShowHomeEnabled(true);
 
         random = new Random();
+        getRandomColor();
 
         ArrayList<Question> allQuestions = getIntent().getParcelableArrayListExtra(QUESTIONS_EXTRA);
         questionManager = new QuestionManager(allQuestions);
@@ -115,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
             menu.findItem(R.id.exit_game).setVisible(true);
         }
 
+        menu.findItem(R.id.change_color).setVisible(sphero != null);
+
         return true;
     }
 
@@ -131,6 +140,9 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 return true;
             case R.id.exit_game:
                 exitLabyrinth();
+                return true;
+            case R.id.change_color:
+                selectColor();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -163,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
                 sphero = new Sphero(robot);
                 discoveryAgent.stopDiscovery();
 
-                sphero.setLed(1f, 0f, 0f);
+                setSpheroColor();
                 sphero.setBackLedBrightness(1.0f);
 
                 if(inGame) {
@@ -198,6 +210,13 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         }
 
         updateScoreDisplay();
+    }
+
+    public void getRandomColor() {
+        TypedArray colors = getResources().obtainTypedArray(R.array.colors);
+        int choice = (int) (Math.random() * colors.length());
+        selectedColor = colors.getColor(choice, ResourcesCompat.getColor(getResources(), R.color.red, null));
+        colors.recycle();
     }
 
     public void hideKeyboard(View view) {
@@ -443,5 +462,35 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
         dialog.setArguments(bundle);
         dialog.setCancelable(false);
         dialog.show(manager, "fragment_edit_name");
+    }
+
+
+    private void setSpheroColor() {
+        if(sphero == null)
+            return;
+
+        float red = Color.red(selectedColor) / 255f;
+        float green = Color.green(selectedColor) / 255f;
+        float blue = Color.blue(selectedColor) / 255f;
+
+        sphero.setLed(red, green, blue);
+    }
+
+    private void selectColor() {
+        new SpectrumDialog.Builder(this)
+                .setDismissOnColorSelected(true)
+                .setColors(R.array.colors)
+                .setSelectedColor(selectedColor)
+                .setOutlineWidth(2)
+                .setOnColorSelectedListener(new SpectrumDialog.OnColorSelectedListener() {
+                    @Override
+                    public void onColorSelected(boolean positiveResult, @ColorInt int color) {
+                        if (positiveResult) {
+                            MainActivity.this.selectedColor = color;
+                            setSpheroColor();
+                        }
+                    }
+                })
+                .build().show(getSupportFragmentManager(), "color_picker");
     }
 }

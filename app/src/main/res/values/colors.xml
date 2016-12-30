@@ -5,8 +5,16 @@
     <color name="colorAccent">#1acad0</color>
 
     <color name="white">#ffffff</color>
-    <color name="red">#FF0000</color>
-    <color name="green">#00FF00</color>
+    <color name="red">#cc3300</color>
+    <color name="green">#339933</color>
+    <color name="pink">#e542f4</color>
+    <color name="fuschia">#ff0066</color>
+    <color name="purple">#9e42f4</color>
+    <color name="blue">#0000ff</color>
+    <color name="turquoise">#00e5ee</color>
+    <color name="lightgreen">#66ff33</color>
+    <color name="yellow">#eaff32</color>
+    <color name="orange">#ff9933</color>
 
     <color name="splashScreenBackground">#FFFFFF</color>
 
@@ -27,4 +35,18 @@
     <color name="textViewFillColor">#00000000</color>
     <color name="textViewPointsBorderColor">#FFFFFF</color>
     <color name="textViewQuestionBorderColor">#FFFFFF</color>
+
+    <array name="colors">
+        <item>@color/red</item>
+        <item>@color/fuschia</item>
+        <item>@color/pink</item>
+        <item>@color/purple</item>
+        <item>@color/blue</item>
+        <item>@color/turquoise</item>
+        <item>@color/green</item>
+        <item>@color/lightgreen</item>
+        <item>@color/yellow</item>
+        <item>@color/orange</item>
+        <item>@color/white</item>
+    </array>
 </resources>
