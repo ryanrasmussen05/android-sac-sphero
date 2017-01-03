@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements RobotChangedState
     public static final String QUESTION_EXTRA = "SAC_SPHERO_QUESTION";
 
     private static final String TAG = "SAC Sphero";
-    private static final int QUESTION_FREQUENCY = 10;
+    private static final int QUESTION_FREQUENCY = 5;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 42;
     private static final int REQUEST_CODE_LOCATION_PERMISSION_WITH_DISCOVERY = 43;
 
