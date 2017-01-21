@@ -12,6 +12,8 @@
     <style name="PrimaryButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_primary_custom</item>
         <item name="android:textSize">@dimen/button_custom_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="SecondaryButton">
@@ -22,6 +24,7 @@
     <style name="AnswerButton">
         <item name="android:background">@drawable/button_answer_custom</item>
         <item name="android:textSize">@dimen/button_answer_custom_text_size</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="QuestionTextView">

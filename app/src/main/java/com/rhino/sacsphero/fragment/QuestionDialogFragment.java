@@ -1,11 +1,13 @@
 package com.rhino.sacsphero.fragment;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,6 +37,7 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setDimAmount(0.8f);
         question = getArguments().getParcelable(MainActivity.QUESTION_EXTRA);
 
@@ -75,6 +78,16 @@ public class QuestionDialogFragment extends DialogFragment implements View.OnCli
         continueLabyrinthButton.setOnClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Dialog dialog = getDialog();
+        if (dialog != null) {
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
     }
 
     @Override

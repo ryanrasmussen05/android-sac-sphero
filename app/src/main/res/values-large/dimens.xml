@@ -26,6 +26,7 @@
     <dimen name="answers_label_text_size">25sp</dimen>
 
     <!--Question Dialog-->
+    <dimen name="question_dialog_padding">15dp</dimen>
     <dimen name="text_view_question_text_size">50sp</dimen>
     <dimen name="text_view_question_padding">50dp</dimen>
     <dimen name="text_view_point_value_text_size">30sp</dimen>
