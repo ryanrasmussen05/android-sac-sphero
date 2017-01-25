@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 1500;
+    private final int SPLASH_DISPLAY_LENGTH = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
